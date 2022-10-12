@@ -1,5 +1,5 @@
 {
-    "name": "inventory-management-system",
+    "name": "inventory-management-system-backend",
     "version": "1.0.0",
     "description": "",
     "main": "./src/app.js",
@@ -8,8 +8,7 @@
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
         "lint:check": "eslint .",
-        "lint:fix": "eslint --fix .",
-        "prepare": "husky install"
+        "lint:fix": "eslint --fix ."
     },
     "author": "",
     "license": "ISC",
@@ -23,7 +22,6 @@
     "devDependencies": {
         "eslint": "^8.25.0",
         "eslint-config-prettier": "^8.5.0",
-        "husky": "^8.0.1",
         "nodemon": "^2.0.20",
         "prettier": "^2.7.1"
     }
