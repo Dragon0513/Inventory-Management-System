@@ -2,7 +2,9 @@ const express = require("express")
 const apicache = require("apicache")
 
 // const v1WorkoutRouter = require("./v1/routes/workoutRoutes")
-// const { swaggerDocs: v1SwaggerDocs } = require("./v1/swagger")
+
+// Swagger Docs
+const { swaggerDocs: v1SwaggerDocs } = require("./v1/swagger")
 
 const app = express()
 // Cache middleware
@@ -21,5 +23,6 @@ app.get("/", function (req, res) {
 
 app.listen(PORT, () => {
     console.log(`API is listening on port ${PORT}`)
-    // v1SwaggerDocs(app, PORT)
+    // Run swagger docs
+    v1SwaggerDocs(app, PORT)
 })
