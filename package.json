@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "server": "nodemon backend/src/app.js",
+        "server": "cd backend && nodemon run dev",
         "app": "cd frontend && npm run dev",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
