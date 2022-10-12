@@ -1,23 +1,32 @@
 {
-  "name": "inventory-management-system",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky install"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/maruffahmed/Inventory-Management-System.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/maruffahmed/Inventory-Management-System/issues"
-  },
-  "homepage": "https://github.com/maruffahmed/Inventory-Management-System#readme",
-  "devDependencies": {
-    "husky": "^8.0.1"
-  }
+    "name": "inventory-management-system",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "server": "nodemon backend/src/app.js",
+        "app": "cd frontend && npm run dev",
+        "format:check": "prettier --check .",
+        "format:write": "prettier --write .",
+        "lint:check": "eslint .",
+        "lint:fix": "eslint --fix .",
+        "prepare": "husky install"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/maruffahmed/Inventory-Management-System.git"
+    },
+    "author": "Md Maruf Ahmed",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/maruffahmed/Inventory-Management-System/issues"
+    },
+    "homepage": "https://github.com/maruffahmed/Inventory-Management-System#readme",
+    "devDependencies": {
+        "husky": "^8.0.1",
+        "eslint": "^8.25.0",
+        "eslint-config-prettier": "^8.5.0",
+        "nodemon": "^2.0.20",
+        "prettier": "^2.7.1"
+    }
 }
