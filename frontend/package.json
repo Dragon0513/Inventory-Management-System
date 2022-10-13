@@ -1,7 +1,7 @@
 {
-    "name": "frontend",
+    "name": "windmill_dashboard_react",
     "private": true,
-    "version": "0.0.0",
+    "version": "1.0.0",
     "type": "module",
     "scripts": {
         "dev": "vite --port 3000",
