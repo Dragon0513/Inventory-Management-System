@@ -4,8 +4,11 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "server": "cd backend && npm run dev",
+        "server": "cd backend && npm start",
+        "server:dev": "cd backend && npm run dev",
         "app": "cd frontend && npm run dev",
+        "app:build": "cd frontend && npm run build",
+        "app:preview": "cd frontend && npm run preview",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
         "lint:check": "eslint .",
