@@ -9,6 +9,7 @@ const setTheme = (theme: string, setState: Function, stateValue: Boolean) => {
 }
 
 function Layout({ children }: { children: React.ReactNode }) {
+    const [isSideMenuOpen, setIsSideMenuOpen] = React.useState(false)
     const [isDarkMode, setIsDarkMode] = React.useState(false)
 
     React.useEffect(() => {
@@ -38,7 +39,10 @@ function Layout({ children }: { children: React.ReactNode }) {
             //   :className="{ 'overflow-hidden': isSideMenuOpen }"
         >
             <DesktopSidebar />
-            {/* <MobileSidebar /> */}
+            <MobileSidebar
+                isSideMenuOpen={isSideMenuOpen}
+                setIsSideMenuOpen={setIsSideMenuOpen}
+            />
             <div className="flex flex-col flex-1 w-full">
                 <header className="z-10 py-4 bg-white shadow-md dark:bg-gray-800">
                     <div className="container flex items-center justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300">
@@ -46,6 +50,7 @@ function Layout({ children }: { children: React.ReactNode }) {
                         <button
                             className="p-1 mr-5 -ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple"
                             //   @click="toggleSideMenu"
+                            onClick={() => setIsSideMenuOpen(!isSideMenuOpen)}
                             aria-label="Menu"
                         >
                             <svg
