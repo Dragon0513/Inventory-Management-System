@@ -2,9 +2,10 @@ import React from "react"
 import DesktopSidebar from "./DesktopSidebar"
 import MobileSidebar from "./MobileSidebar"
 
-const setTheme = (theme: string) => {
+const setTheme = (theme: string, setState: Function, stateValue: Boolean) => {
     localStorage.setItem("theme", theme)
     document.documentElement.className = theme
+    setState(stateValue)
 }
 
 function Layout({ children }: { children: React.ReactNode }) {
@@ -17,20 +18,18 @@ function Layout({ children }: { children: React.ReactNode }) {
             (!("theme" in localStorage) &&
                 window.matchMedia("(prefers-color-scheme: dark)").matches)
         ) {
-            setTheme("dark")
+            setTheme("dark", setIsDarkMode, true)
         } else {
-            setTheme("light")
+            setTheme("light", setIsDarkMode, false)
         }
         // Whenever the user explicitly chooses to respect the OS preference
         // window.localStorage.removeItem("theme")
     }, [])
     const toggleDarkMode = () => {
         if (window.localStorage.theme === "dark") {
-            setTheme("light")
-            setIsDarkMode(false)
+            setTheme("light", setIsDarkMode, false)
         } else {
-            setTheme("dark")
-            setIsDarkMode(true)
+            setTheme("dark", setIsDarkMode, true)
         }
     }
     return (
