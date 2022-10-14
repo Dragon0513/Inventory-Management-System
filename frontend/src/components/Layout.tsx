@@ -1,7 +1,9 @@
 import React from "react"
+import { Outlet } from "react-router-dom"
 import DesktopSidebar from "./DesktopSidebar"
 import MobileSidebar from "./MobileSidebar"
 import { Menu } from "@headlessui/react"
+import { classNames } from "../utils"
 
 const setTheme = (theme: string, setState: Function, stateValue: Boolean) => {
     localStorage.setItem("theme", theme)
@@ -9,7 +11,7 @@ const setTheme = (theme: string, setState: Function, stateValue: Boolean) => {
     setState(stateValue)
 }
 
-function Layout({ children }: { children: React.ReactNode }) {
+function Layout() {
     const [isSideMenuOpen, setIsSideMenuOpen] = React.useState(false)
     const [isDarkMode, setIsDarkMode] = React.useState(false)
 
@@ -36,8 +38,10 @@ function Layout({ children }: { children: React.ReactNode }) {
     }
     return (
         <div
-            className="flex h-screen bg-gray-50 dark:bg-gray-900"
-            //   :className="{ 'overflow-hidden': isSideMenuOpen }"
+            className={classNames(
+                "flex h-screen bg-gray-50 dark:bg-gray-900",
+                isSideMenuOpen ? "overflow-hidden" : null
+            )}
         >
             <DesktopSidebar />
             <MobileSidebar
@@ -50,7 +54,6 @@ function Layout({ children }: { children: React.ReactNode }) {
                         {/* <!-- Mobile hamburger --> */}
                         <button
                             className="p-1 mr-5 -ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple"
-                            //   @click="toggleSideMenu"
                             onClick={() => setIsSideMenuOpen(!isSideMenuOpen)}
                             aria-label="Menu"
                         >
@@ -131,8 +134,6 @@ function Layout({ children }: { children: React.ReactNode }) {
                                     <Menu.Button>
                                         <button
                                             className="relative align-middle rounded-md focus:outline-none focus:shadow-outline-purple"
-                                            //   @click="toggleNotificationsMenu"
-                                            //   @keydown.escape="closeNotificationsMenu"
                                             aria-label="Notifications"
                                             aria-haspopup="true"
                                         >
@@ -289,7 +290,7 @@ function Layout({ children }: { children: React.ReactNode }) {
                         </ul>
                     </div>
                 </header>
-                {children}
+                <Outlet />
             </div>
         </div>
     )
