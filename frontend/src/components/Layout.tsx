@@ -1,7 +1,7 @@
 import React from "react"
 import { Outlet } from "react-router-dom"
-import DesktopSidebar from "./DesktopSidebar"
-import MobileSidebar from "./MobileSidebar"
+import DesktopSidebar from "./SideBar/DesktopSidebar"
+import MobileSidebar from "./SideBar/MobileSidebar"
 import { Menu } from "@headlessui/react"
 import { classNames } from "../utils"
 
@@ -290,6 +290,7 @@ function Layout() {
                         </ul>
                     </div>
                 </header>
+                {/* Render nested children */}
                 <Outlet />
             </div>
         </div>
