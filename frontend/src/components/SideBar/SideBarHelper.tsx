@@ -223,9 +223,12 @@ export function SideBarMenuItem({ item }: { item: sideBarMenuType }) {
                                         key={i}
                                         className="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                     >
-                                        <a className="w-full" href={child.url}>
+                                        <NavLink
+                                            className="w-full"
+                                            to={child.url}
+                                        >
                                             {child.name}
-                                        </a>
+                                        </NavLink>
                                     </li>
                                 ))}
                             </ul>
