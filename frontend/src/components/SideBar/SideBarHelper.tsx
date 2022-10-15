@@ -22,9 +22,9 @@ export const sideBarMenus = [
                 className="w-5 h-5"
                 aria-hidden="true"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
             >
@@ -40,9 +40,9 @@ export const sideBarMenus = [
                 className="w-5 h-5"
                 aria-hidden="true"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
             >
@@ -58,9 +58,9 @@ export const sideBarMenus = [
                 className="w-5 h-5"
                 aria-hidden="true"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
             >
@@ -76,9 +76,9 @@ export const sideBarMenus = [
                 className="w-5 h-5"
                 aria-hidden="true"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
             >
@@ -95,9 +95,9 @@ export const sideBarMenus = [
                 className="w-5 h-5"
                 aria-hidden="true"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
             >
@@ -113,9 +113,9 @@ export const sideBarMenus = [
                 className="w-5 h-5"
                 aria-hidden="true"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
             >
@@ -131,9 +131,9 @@ export const sideBarMenus = [
                 className="w-5 h-5"
                 aria-hidden="true"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
             >
@@ -149,9 +149,9 @@ export const sideBarMenus = [
                 className="w-5 h-5"
                 aria-hidden="true"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
             >
@@ -174,10 +174,6 @@ export const sideBarMenus = [
             {
                 name: "404",
                 url: "/404",
-            },
-            {
-                name: "Blank",
-                url: "/blank",
             },
         ],
     },
@@ -203,9 +199,9 @@ export function SideBarMenuItem({ item }: { item: sideBarMenuType }) {
                                     className="w-4 h-4 ml-auto"
                                     aria-hidden="true"
                                     fill="none"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
                                 >

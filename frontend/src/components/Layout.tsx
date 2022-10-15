@@ -64,9 +64,9 @@ function Layout() {
                                 viewBox="0 0 20 20"
                             >
                                 <path
-                                    fill-rule="evenodd"
+                                    fillRule="evenodd"
                                     d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                                    clip-rule="evenodd"
+                                    clipRule="evenodd"
                                 ></path>
                             </svg>
                         </button>
@@ -81,9 +81,9 @@ function Layout() {
                                         viewBox="0 0 20 20"
                                     >
                                         <path
-                                            fill-rule="evenodd"
+                                            fillRule="evenodd"
                                             d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                            clip-rule="evenodd"
+                                            clipRule="evenodd"
                                         ></path>
                                     </svg>
                                 </div>
@@ -120,9 +120,9 @@ function Layout() {
                                             viewBox="0 0 20 20"
                                         >
                                             <path
-                                                fill-rule="evenodd"
+                                                fillRule="evenodd"
                                                 d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                                                clip-rule="evenodd"
+                                                clipRule="evenodd"
                                             ></path>
                                         </svg>
                                     )}
@@ -131,26 +131,24 @@ function Layout() {
                             {/* <!-- Notifications menu --> */}
                             <li className="relative">
                                 <Menu>
-                                    <Menu.Button>
-                                        <button
-                                            className="relative align-middle rounded-md focus:outline-none focus:shadow-outline-purple"
-                                            aria-label="Notifications"
-                                            aria-haspopup="true"
+                                    <Menu.Button
+                                        className="relative align-middle rounded-md focus:outline-none focus:shadow-outline-purple"
+                                        aria-label="Notifications"
+                                        aria-haspopup="true"
+                                    >
+                                        <svg
+                                            className="w-5 h-5"
+                                            aria-hidden="true"
+                                            fill="currentColor"
+                                            viewBox="0 0 20 20"
                                         >
-                                            <svg
-                                                className="w-5 h-5"
-                                                aria-hidden="true"
-                                                fill="currentColor"
-                                                viewBox="0 0 20 20"
-                                            >
-                                                <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path>
-                                            </svg>
-                                            {/* <!-- Notification badge --> */}
-                                            <span
-                                                aria-hidden="true"
-                                                className="absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-red-600 border-2 border-white rounded-full dark:border-gray-800"
-                                            ></span>
-                                        </button>
+                                            <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path>
+                                        </svg>
+                                        {/* <!-- Notification badge --> */}
+                                        <span
+                                            aria-hidden="true"
+                                            className="absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-red-600 border-2 border-white rounded-full dark:border-gray-800"
+                                        ></span>
                                     </Menu.Button>
                                     <Menu.Items
                                         as="ul"
@@ -198,19 +196,17 @@ function Layout() {
                             {/* <!-- Profile menu --> */}
                             <li className="relative">
                                 <Menu>
-                                    <Menu.Button>
-                                        <button
-                                            className="align-middle rounded-full focus:shadow-outline-purple focus:outline-none"
-                                            aria-label="Account"
-                                            aria-haspopup="true"
-                                        >
-                                            <img
-                                                className="object-cover w-8 h-8 rounded-full"
-                                                src="https://images.unsplash.com/photo-1502378735452-bc7d86632805?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=aa3a807e1bbdfd4364d1f449eaa96d82"
-                                                alt=""
-                                                aria-hidden="true"
-                                            />
-                                        </button>
+                                    <Menu.Button
+                                        className="align-middle rounded-full focus:shadow-outline-purple focus:outline-none"
+                                        aria-label="Account"
+                                        aria-haspopup="true"
+                                    >
+                                        <img
+                                            className="object-cover w-8 h-8 rounded-full"
+                                            src="https://images.unsplash.com/photo-1502378735452-bc7d86632805?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=aa3a807e1bbdfd4364d1f449eaa96d82"
+                                            alt=""
+                                            aria-hidden="true"
+                                        />
                                     </Menu.Button>
                                     <Menu.Items
                                         as="ul"
@@ -227,9 +223,9 @@ function Layout() {
                                                         className="w-4 h-4 mr-3"
                                                         aria-hidden="true"
                                                         fill="none"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        stroke-width="2"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        strokeWidth="2"
                                                         viewBox="0 0 24 24"
                                                         stroke="currentColor"
                                                     >
@@ -249,9 +245,9 @@ function Layout() {
                                                         className="w-4 h-4 mr-3"
                                                         aria-hidden="true"
                                                         fill="none"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        stroke-width="2"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        strokeWidth="2"
                                                         viewBox="0 0 24 24"
                                                         stroke="currentColor"
                                                     >
@@ -272,9 +268,9 @@ function Layout() {
                                                         className="w-4 h-4 mr-3"
                                                         aria-hidden="true"
                                                         fill="none"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        stroke-width="2"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        strokeWidth="2"
                                                         viewBox="0 0 24 24"
                                                         stroke="currentColor"
                                                     >
