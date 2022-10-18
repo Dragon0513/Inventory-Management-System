@@ -201,7 +201,8 @@ module.exports = {
     },
     plugins: [
         // require("tailwindcss-multi-theme"),
-        require("@tailwindcss/custom-forms"),
+        // require("@tailwindcss/custom-forms"),
+        require("@tailwindcss/forms"),
         // eslint-disable-next-line no-unused-vars
         plugin(({ addUtilities, e, theme, variants }) => {
             const newUtilities = {}

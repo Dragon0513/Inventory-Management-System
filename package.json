@@ -26,9 +26,9 @@
     },
     "homepage": "https://github.com/maruffahmed/Inventory-Management-System#readme",
     "devDependencies": {
-        "husky": "^8.0.1",
         "eslint": "^8.25.0",
         "eslint-config-prettier": "^8.5.0",
+        "husky": "^8.0.1",
         "prettier": "^2.7.1"
     }
 }
