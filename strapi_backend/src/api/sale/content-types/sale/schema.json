@@ -1,20 +1,25 @@
 {
-    "kind": "collectionType",
-    "collectionName": "sales",
-    "info": {
-        "singularName": "sale",
-        "pluralName": "sales",
-        "displayName": "Sale"
+  "kind": "collectionType",
+  "collectionName": "sales",
+  "info": {
+    "singularName": "sale",
+    "pluralName": "sales",
+    "displayName": "Sale",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product"
     },
-    "options": {
-        "draftAndPublish": true
-    },
-    "pluginOptions": {},
-    "attributes": {
-        "products": {
-            "type": "relation",
-            "relation": "oneToMany",
-            "target": "api::product.product"
-        }
+    "quantity": {
+      "type": "integer",
+      "required": true
     }
+  }
 }
