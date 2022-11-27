@@ -1,31 +1,31 @@
 {
-    "kind": "collectionType",
-    "collectionName": "stores",
-    "info": {
-        "singularName": "store",
-        "pluralName": "stores",
-        "displayName": "Store",
-        "description": ""
+  "kind": "collectionType",
+  "collectionName": "stores",
+  "info": {
+    "singularName": "store",
+    "pluralName": "stores",
+    "displayName": "Store",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
     },
-    "options": {
-        "draftAndPublish": false
+    "address": {
+      "type": "text",
+      "required": true
     },
-    "pluginOptions": {},
-    "attributes": {
-        "name": {
-            "type": "string",
-            "required": true,
-            "unique": true
-        },
-        "address": {
-            "type": "text",
-            "required": true
-        },
-        "products": {
-            "type": "relation",
-            "relation": "oneToMany",
-            "target": "api::product.product",
-            "mappedBy": "store"
-        }
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product",
+      "mappedBy": "store"
     }
+  }
 }

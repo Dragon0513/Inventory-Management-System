@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2022-11-27T18:13:35.675Z"
+    "x-generation-date": "2022-11-27T21:13:37.210Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -1199,6 +1199,9 @@
                                 }
                               }
                             },
+                            "price": {
+                              "type": "integer"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -2372,6 +2375,9 @@
                                   }
                                 }
                               }
+                            },
+                            "price": {
+                              "type": "integer"
                             },
                             "createdAt": {
                               "type": "string",
@@ -3580,6 +3586,9 @@
                                 }
                               }
                             },
+                            "price": {
+                              "type": "integer"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -4754,6 +4763,9 @@
                                 }
                               }
                             },
+                            "price": {
+                              "type": "integer"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -4916,6 +4928,9 @@
                   }
                 ],
                 "example": "string or id"
+              },
+              "price": {
+                "type": "integer"
               }
             }
           }
@@ -6578,6 +6593,9 @@
                                               }
                                             }
                                           },
+                                          "price": {
+                                            "type": "integer"
+                                          },
                                           "createdAt": {
                                             "type": "string",
                                             "format": "date-time"
@@ -6692,6 +6710,9 @@
                     }
                   }
                 }
+              },
+              "price": {
+                "type": "integer"
               },
               "createdAt": {
                 "type": "string",
@@ -8396,6 +8417,9 @@
                                               }
                                             }
                                           },
+                                          "price": {
+                                            "type": "integer"
+                                          },
                                           "createdAt": {
                                             "type": "string",
                                             "format": "date-time"
@@ -8510,6 +8534,9 @@
                     }
                   }
                 }
+              },
+              "price": {
+                "type": "integer"
               },
               "createdAt": {
                 "type": "string",
@@ -10247,6 +10274,9 @@
                                               }
                                             }
                                           },
+                                          "price": {
+                                            "type": "integer"
+                                          },
                                           "createdAt": {
                                             "type": "string",
                                             "format": "date-time"
@@ -10361,6 +10391,9 @@
                     }
                   }
                 }
+              },
+              "price": {
+                "type": "integer"
               },
               "createdAt": {
                 "type": "string",
@@ -12065,6 +12098,9 @@
                                               }
                                             }
                                           },
+                                          "price": {
+                                            "type": "integer"
+                                          },
                                           "createdAt": {
                                             "type": "string",
                                             "format": "date-time"
@@ -12179,6 +12215,9 @@
                     }
                   }
                 }
+              },
+              "price": {
+                "type": "integer"
               },
               "createdAt": {
                 "type": "string",
@@ -13339,6 +13378,9 @@
                                 }
                               }
                             }
+                          },
+                          "price": {
+                            "type": "integer"
                           },
                           "createdAt": {
                             "type": "string",
@@ -14510,6 +14552,9 @@
                                 }
                               }
                             }
+                          },
+                          "price": {
+                            "type": "integer"
                           },
                           "createdAt": {
                             "type": "string",
@@ -15715,6 +15760,9 @@
                               }
                             }
                           },
+                          "price": {
+                            "type": "integer"
+                          },
                           "createdAt": {
                             "type": "string",
                             "format": "date-time"
@@ -16885,6 +16933,9 @@
                                 }
                               }
                             }
+                          },
+                          "price": {
+                            "type": "integer"
                           },
                           "createdAt": {
                             "type": "string",
@@ -18112,6 +18163,9 @@
                                 }
                               }
                             },
+                            "price": {
+                              "type": "integer"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -19288,6 +19342,9 @@
                                   }
                                 }
                               }
+                            },
+                            "price": {
+                              "type": "integer"
                             },
                             "createdAt": {
                               "type": "string",
@@ -20499,6 +20556,9 @@
                                 }
                               }
                             },
+                            "price": {
+                              "type": "integer"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -21675,6 +21735,9 @@
                                   }
                                 }
                               }
+                            },
+                            "price": {
+                              "type": "integer"
                             },
                             "createdAt": {
                               "type": "string",

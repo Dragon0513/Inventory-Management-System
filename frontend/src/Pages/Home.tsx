@@ -1,4 +1,3 @@
-import Layout from "../components/Layout"
 import { Line, Doughnut } from "react-chartjs-2"
 import {
     Chart as ChartJS,

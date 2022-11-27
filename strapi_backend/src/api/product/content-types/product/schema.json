@@ -1,47 +1,55 @@
 {
-    "kind": "collectionType",
-    "collectionName": "products",
-    "info": {
-        "singularName": "product",
-        "pluralName": "products",
-        "displayName": "Product",
-        "description": ""
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
     },
-    "options": {
-        "draftAndPublish": false
+    "description": {
+      "type": "text",
+      "required": false
     },
-    "pluginOptions": {},
-    "attributes": {
-        "name": {
-            "type": "string",
-            "required": true,
-            "unique": true
-        },
-        "description": {
-            "type": "text",
-            "required": false
-        },
-        "quantity": {
-            "type": "integer",
-            "required": true
-        },
-        "image": {
-            "type": "media",
-            "multiple": false,
-            "required": false,
-            "allowedTypes": ["images", "files", "videos", "audios"]
-        },
-        "categories": {
-            "type": "relation",
-            "relation": "manyToMany",
-            "target": "api::category.category",
-            "mappedBy": "products"
-        },
-        "store": {
-            "type": "relation",
-            "relation": "manyToOne",
-            "target": "api::store.store",
-            "inversedBy": "products"
-        }
+    "quantity": {
+      "type": "integer",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "mappedBy": "products"
+    },
+    "store": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::store.store",
+      "inversedBy": "products"
+    },
+    "price": {
+      "type": "integer"
     }
+  }
 }
