@@ -1,0 +1,20 @@
+{
+    "kind": "collectionType",
+    "collectionName": "sales",
+    "info": {
+        "singularName": "sale",
+        "pluralName": "sales",
+        "displayName": "Sale"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "products": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::product.product"
+        }
+    }
+}

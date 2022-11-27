@@ -6,6 +6,8 @@
     "scripts": {
         "server": "cd backend && npm start",
         "server:dev": "cd backend && npm run dev",
+        "strapi:start": "cd strapi_backend && npm start",
+        "strapi:dev": "cd strapi_backend && npm run develop",
         "app": "cd frontend && npm run dev",
         "app:build": "cd frontend && npm run build",
         "app:preview": "cd frontend && npm run preview",

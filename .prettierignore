@@ -2,3 +2,7 @@ node_modules
 backend/node_modules
 frontend/node_modules
 frontend/dist
+frontend_remix/node_modules
+frontend_remix/build
+frontend_remix/public/build
+strapi_backend/*
