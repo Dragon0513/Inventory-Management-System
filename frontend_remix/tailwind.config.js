@@ -206,7 +206,9 @@ module.exports = {
         // eslint-disable-next-line no-unused-vars
         plugin(({ addUtilities, e, theme, variants }) => {
             const newUtilities = {}
+            // eslint-disable-next-line array-callback-return
             Object.entries(theme("colors")).map(([name, value]) => {
+                // eslint-disable-next-line array-callback-return
                 if (name === "transparent" || name === "current") return
                 const color = value[300] ? value[300] : value
                 const hsla = Color(color).alpha(0.45).hsl().string()
