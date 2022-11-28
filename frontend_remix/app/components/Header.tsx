@@ -1,4 +1,5 @@
 import { Menu } from "@headlessui/react"
+import { Link } from "@remix-run/react"
 
 function Header({
     setIsSideMenuOpen,
@@ -119,38 +120,38 @@ function Header({
                             >
                                 <Menu.Item>
                                     <li className="flex">
-                                        <a
+                                        <Link
                                             className="inline-flex items-center justify-between w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                            href="#"
+                                            to="/"
                                         >
                                             <span>Messages</span>
                                             <span className="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-600 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-600">
                                                 13
                                             </span>
-                                        </a>
+                                        </Link>
                                     </li>
                                 </Menu.Item>
                                 <Menu.Item>
                                     <li className="flex">
-                                        <a
+                                        <Link
                                             className="inline-flex items-center justify-between w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                            href="#"
+                                            to="/"
                                         >
                                             <span>Sales</span>
                                             <span className="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-600 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-600">
                                                 2
                                             </span>
-                                        </a>
+                                        </Link>
                                     </li>
                                 </Menu.Item>
                                 <Menu.Item>
                                     <li className="flex">
-                                        <a
+                                        <Link
                                             className="inline-flex items-center justify-between w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                            href="#"
+                                            to="/"
                                         >
                                             <span>Alerts</span>
-                                        </a>
+                                        </Link>
                                     </li>
                                 </Menu.Item>
                             </Menu.Items>
@@ -178,9 +179,9 @@ function Header({
                             >
                                 <Menu.Item>
                                     <li className="flex">
-                                        <a
+                                        <Link
                                             className="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                            href="#"
+                                            to="/"
                                         >
                                             <svg
                                                 className="w-4 h-4 mr-3"
@@ -195,14 +196,14 @@ function Header({
                                                 <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                                             </svg>
                                             <span>Profile</span>
-                                        </a>
+                                        </Link>
                                     </li>
                                 </Menu.Item>
                                 <Menu.Item>
                                     <li className="flex">
-                                        <a
+                                        <Link
                                             className="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                            href="#"
+                                            to="/"
                                         >
                                             <svg
                                                 className="w-4 h-4 mr-3"
@@ -218,14 +219,15 @@ function Header({
                                                 <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                             </svg>
                                             <span>Settings</span>
-                                        </a>
+                                        </Link>
                                     </li>
                                 </Menu.Item>
                                 <Menu.Item>
                                     <li className="flex">
-                                        <a
+                                        <Link
                                             className="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                            href="#"
+                                            type="submit"
+                                            to="/logout"
                                         >
                                             <svg
                                                 className="w-4 h-4 mr-3"
@@ -240,7 +242,7 @@ function Header({
                                                 <path d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
                                             </svg>
                                             <span>Log out</span>
-                                        </a>
+                                        </Link>
                                     </li>
                                 </Menu.Item>
                             </Menu.Items>

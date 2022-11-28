@@ -1,23 +1,29 @@
+import axios from "axios"
 import type { LoaderFunction } from "@remix-run/node"
 import type { ProductType } from "~/types"
 import { json } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
 import { classNames } from "~/utils"
+import numeral from "numeral"
 
 interface LoaderData {
     "Products Value": string
 }
 
 export const loader: LoaderFunction = async () => {
-    const res = await fetch("http://localhost:1337/api/products")
-    const products: ProductType = await res.json()
+    const res = await axios.get("http://localhost:1337/api/products")
+    const products: ProductType = res.data
     const data: LoaderData = {
         "Products Value":
             "৳ " +
-            products.data.reduce(
-                (total, item) => total + item.attributes.price,
-                0
-            ),
+            numeral(
+                products.data.reduce(
+                    (total, item) =>
+                        total +
+                        item.attributes.price * item.attributes.quantity,
+                    0
+                )
+            ).format("0,0"),
     }
     return json(data)
 }
@@ -138,7 +144,7 @@ function Card({ title, value, icon, color }: typeof cards[0]) {
 
 function Index() {
     const products = useLoaderData<LoaderData>()
-    console.log("products ", products)
+    // console.log("products ", products)
     return (
         <main className="h-full overflow-y-auto">
             <div className="container px-6 mx-auto grid">

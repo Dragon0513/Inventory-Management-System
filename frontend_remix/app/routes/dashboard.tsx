@@ -1,14 +1,19 @@
-import type { MetaFunction } from "@remix-run/node"
+import type { LoaderFunction, MetaFunction } from "@remix-run/node"
 import { Outlet } from "@remix-run/react"
 import Header from "~/components/Header"
 import DesktopSidebar from "~/components/SideBar/DesktopSidebar"
 import MobileSidebar from "~/components/SideBar/MobileSidebar"
 import { useThemeProvider } from "~/context/ThemeContext"
 import { classNames } from "~/utils"
+import { requireUserId } from "~/utils/session.server"
 
 export const meta: MetaFunction = () => ({
     title: "Dashboard",
 })
+
+export const loader: LoaderFunction = async ({ request }) => {
+    return await requireUserId(request)
+}
 
 function Index() {
     const { isDarkMode, isSideMenuOpen, setIsSideMenuOpen, toggleDarkMode } =
