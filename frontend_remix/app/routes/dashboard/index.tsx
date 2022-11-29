@@ -1,6 +1,6 @@
 import axios from "axios"
 import type { LoaderFunction } from "@remix-run/node"
-import type { ProductType } from "~/types"
+import type { Categories, ProductType } from "~/types"
 import { json } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
 import { classNames } from "~/utils"
@@ -11,11 +11,15 @@ const SERVER_URL = config.SERVER_URL
 
 interface LoaderData {
     "Products Value": string
+    "Total Products": string
+    "Total Categories": string
 }
 
 export const loader: LoaderFunction = async () => {
-    const res = await axios.get(`${SERVER_URL}/api/products`)
-    const products: ProductType = res.data
+    const productRes = await axios.get(`${SERVER_URL}/api/products`)
+    const categoriesRes = await axios.get(`${SERVER_URL}/api/categories`)
+    const products: ProductType = productRes.data
+    const categories: Categories = categoriesRes.data
     const data: LoaderData = {
         "Products Value":
             "৳ " +
@@ -27,6 +31,8 @@ export const loader: LoaderFunction = async () => {
                     0
                 )
             ).format("0,0"),
+        "Total Products": products.data.length + "",
+        "Total Categories": categories.data.length + "",
     }
     return json(data)
 }

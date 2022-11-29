@@ -5,6 +5,7 @@ import { useLoaderData } from "@remix-run/react"
 import axios from "axios"
 import config from "~/config"
 import Buttton from "~/components/Buttton"
+import numeral from "numeral"
 
 const SERVER_URL = config.SERVER_URL
 
@@ -91,7 +92,10 @@ function ProductList() {
                                             {product.attributes.quantity}
                                         </td>
                                         <td className="px-4 py-3 text-xs">
-                                            ৳ {product.attributes.price}
+                                            ৳{" "}
+                                            {numeral(
+                                                product.attributes.price
+                                            ).format("0,0")}
                                         </td>
                                         <td className="px-4 py-3 text-sm">
                                             {
