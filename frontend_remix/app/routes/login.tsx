@@ -1,8 +1,8 @@
-import type { ActionFunction } from "@remix-run/node"
-import { json } from "@remix-run/node"
+import type { ActionFunction, LoaderFunction } from "@remix-run/node"
+import { json, redirect } from "@remix-run/node"
 import { Form, useActionData, useSearchParams } from "@remix-run/react"
 import validator from "validator"
-import { login, createUserSession } from "~/utils/session.server"
+import { login, createUserSession, getUserId } from "~/utils/session.server"
 
 function validateEmail(email: unknown) {
     if (typeof email !== "string" || !validator.isEmail(email)) {
@@ -18,7 +18,14 @@ function validatePassword(password: unknown) {
 
 function validateUrl(url: any) {
     console.log(url)
-    let urls = ["/dashboard", "/", "https://remix.run"]
+    let urls = [
+        "/dashboard",
+        "/products",
+        "/products/list",
+        "/products/add",
+        "/",
+        "https://remix.run",
+    ]
     if (urls.includes(url)) {
         return url
     }
@@ -71,6 +78,14 @@ export const action: ActionFunction = async ({ request }) => {
         })
     }
     return createUserSession(user.user.id, user.jwt, redirectTo)
+}
+
+export const loader: LoaderFunction = async ({ request }) => {
+    const userId = await getUserId(request)
+    if (userId) {
+        return redirect("/dashboard")
+    }
+    return null
 }
 
 function Login() {

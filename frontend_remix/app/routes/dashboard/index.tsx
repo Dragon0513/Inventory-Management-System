@@ -5,13 +5,16 @@ import { json } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
 import { classNames } from "~/utils"
 import numeral from "numeral"
+import config from "~/config"
+
+const SERVER_URL = config.SERVER_URL
 
 interface LoaderData {
     "Products Value": string
 }
 
 export const loader: LoaderFunction = async () => {
-    const res = await axios.get("http://localhost:1337/api/products")
+    const res = await axios.get(`${SERVER_URL}/api/products`)
     const products: ProductType = res.data
     const data: LoaderData = {
         "Products Value":

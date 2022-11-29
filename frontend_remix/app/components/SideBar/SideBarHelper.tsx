@@ -230,7 +230,14 @@ export function SideBarMenuItem({ item }: { item: sideBarMenuType }) {
                                         className="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                     >
                                         <NavLink
-                                            className="w-full"
+                                            className={({ isActive }) =>
+                                                classNames(
+                                                    "w-full",
+                                                    isActive
+                                                        ? "text-gray-800 dark:text-gray-100"
+                                                        : null
+                                                )
+                                            }
                                             to={child.url}
                                         >
                                             {child.name}

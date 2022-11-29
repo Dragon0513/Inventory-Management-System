@@ -13,6 +13,7 @@
         "app:preview": "cd frontend && npm run preview",
         "remix": "cd frontend_remix && npm run dev",
         "remix:build": "cd frontend_remix && npm run build",
+        "remix:preview": "cd frontend_remix && npm start",
         "app:start": "cd frontend_remix && npm run preview",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",

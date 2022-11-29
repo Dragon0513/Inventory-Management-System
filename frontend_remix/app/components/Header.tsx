@@ -1,5 +1,9 @@
 import { Menu } from "@headlessui/react"
 import { Link } from "@remix-run/react"
+import { useAuthProvider } from "~/context/AuthProvider"
+import config from "~/config"
+
+const SERVER_URL = config.SERVER_URL
 
 function Header({
     setIsSideMenuOpen,
@@ -12,6 +16,10 @@ function Header({
     toggleDarkMode: Function
     isDarkMode: Boolean
 }) {
+    const { avatar } = useAuthProvider()
+    const avatarUrl = avatar?.formats?.thumbnail?.url
+        ? SERVER_URL + avatar?.formats?.thumbnail?.url
+        : "/img/avatar.png"
     return (
         <header className="z-10 py-4 bg-white shadow-md dark:bg-gray-800">
             <div className="container flex items-center justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300">
@@ -167,7 +175,7 @@ function Header({
                             >
                                 <img
                                     className="object-cover w-8 h-8 rounded-full"
-                                    src="https://images.unsplash.com/photo-1502378735452-bc7d86632805?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=aa3a807e1bbdfd4364d1f449eaa96d82"
+                                    src={avatarUrl}
                                     alt=""
                                     aria-hidden="true"
                                 />

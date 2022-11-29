@@ -1,4 +1,10 @@
-import type { LinksFunction, MetaFunction } from "@remix-run/node"
+import type { User } from "./types"
+import type {
+    LinksFunction,
+    LoaderFunction,
+    MetaFunction,
+} from "@remix-run/node"
+import { json } from "@remix-run/node"
 import {
     Links,
     LiveReload,
@@ -7,10 +13,13 @@ import {
     Scripts,
     ScrollRestoration,
     useCatch,
+    useLoaderData,
 } from "@remix-run/react"
 import React from "react"
 import ThemeProvider from "./context/ThemeContext"
 import styles from "./styles/app.css"
+import { getUser } from "./utils/session.server"
+import AuthProvider from "./context/AuthProvider"
 
 export const links: LinksFunction = () => {
     return [{ rel: "stylesheet", href: styles }]
@@ -21,11 +30,27 @@ export const meta: MetaFunction = () => ({
     viewport: "width=device-width,initial-scale=1",
 })
 
+type LoaderData = {
+    user: User
+}
+
+export const loader: LoaderFunction = async ({ request }) => {
+    const res = await getUser(request)
+    const user: User = res?.data
+    const data: LoaderData = {
+        user,
+    }
+    return json(data)
+}
+
 export default function App() {
+    const data = useLoaderData<LoaderData>()
     return (
         <Document>
             <ThemeProvider>
-                <Outlet />
+                <AuthProvider user={data.user}>
+                    <Outlet />
+                </AuthProvider>
             </ThemeProvider>
         </Document>
     )

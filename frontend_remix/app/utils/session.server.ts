@@ -66,7 +66,7 @@ export async function requireUserId(
     const session = await getUserSession(request)
     // console.log("session ", session)
     const userId = session.get("userId")
-    console.log("userId ", userId)
+    // console.log("userId ", userId)
     if (!userId || typeof userId !== "number") {
         const searchParams = new URLSearchParams([["redirectTo", redirectTo]])
         throw redirect(`/login?${searchParams}`)
@@ -81,11 +81,14 @@ export async function getUser(request: Request) {
     }
 
     try {
-        const user = await axios.get(`http://localhost:1337/api/users/me`, {
-            headers: {
-                Authorization: `Bearer ${jwt}`,
-            },
-        })
+        const user = await axios.get(
+            `http://localhost:1337/api/users/me?populate=role,avatar`,
+            {
+                headers: {
+                    Authorization: `Bearer ${jwt}`,
+                },
+            }
+        )
         return user
     } catch {
         throw logout(request)
