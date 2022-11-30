@@ -118,3 +118,16 @@ export interface User {
     role: UserRole
     avatar: UserAvatar
 }
+
+export interface Sale {
+    id: number
+    attributes: {
+        quantity: number
+        product: {
+            data: Product
+        }
+    }
+}
+export interface Sales {
+    data: Sale[]
+}

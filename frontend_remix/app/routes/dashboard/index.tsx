@@ -1,6 +1,6 @@
 import axios from "axios"
 import type { LoaderFunction } from "@remix-run/node"
-import type { Categories, ProductType } from "~/types"
+import type { Categories, ProductType, Sales } from "~/types"
 import { json } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
 import { classNames } from "~/utils"
@@ -10,6 +10,7 @@ import config from "~/config"
 const SERVER_URL = config.SERVER_URL
 
 interface LoaderData {
+    "Sales Revenue": string
     "Products Value": string
     "Total Products": string
     "Total Categories": string
@@ -18,8 +19,10 @@ interface LoaderData {
 export const loader: LoaderFunction = async () => {
     const productRes = await axios.get(`${SERVER_URL}/api/products`)
     const categoriesRes = await axios.get(`${SERVER_URL}/api/categories`)
+    const saleRes = await axios.get(`${SERVER_URL}/api/sales?populate=product`)
     const products: ProductType = productRes.data
     const categories: Categories = categoriesRes.data
+    const sales: Sales = saleRes.data
     const data: LoaderData = {
         "Products Value":
             "৳ " +
@@ -33,6 +36,17 @@ export const loader: LoaderFunction = async () => {
             ).format("0,0"),
         "Total Products": products.data.length + "",
         "Total Categories": categories.data.length + "",
+        "Sales Revenue":
+            "৳ " +
+            numeral(
+                sales.data.reduce(
+                    (total, sale) =>
+                        total +
+                        sale.attributes.product.data.attributes.price *
+                            sale.attributes.quantity,
+                    0
+                )
+            ).format("0,0"),
     }
     return json(data)
 }
