@@ -4,7 +4,7 @@ import { json } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
 import axios from "axios"
 import config from "~/config"
-import Buttton from "~/components/Buttton"
+import Button from "~/components/Button"
 import numeral from "numeral"
 
 const SERVER_URL = config.SERVER_URL
@@ -33,9 +33,9 @@ function ProductList() {
                         Products
                     </h2>
 
-                    <Buttton href="/products/add" className="px-5">
+                    <Button href="/products/add" className="px-5">
                         Add new
-                    </Buttton>
+                    </Button>
                 </div>
                 <div className="w-full overflow-hidden rounded-lg shadow-xs">
                     <div className="w-full overflow-x-auto">

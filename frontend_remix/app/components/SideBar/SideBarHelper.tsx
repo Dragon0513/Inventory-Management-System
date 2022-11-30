@@ -60,133 +60,133 @@ export const sideBarMenus = [
             },
         ],
     },
-    {
-        name: "Cards",
-        url: "/cards",
-        icon: (
-            <svg
-                className="w-5 h-5"
-                aria-hidden="true"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-            >
-                <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-            </svg>
-        ),
-    },
-    {
-        name: "Charts",
-        url: "/charts",
-        icon: (
-            <svg
-                className="w-5 h-5"
-                aria-hidden="true"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-            >
-                <path d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
-                <path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
-            </svg>
-        ),
-    },
-    {
-        name: "Buttons",
-        url: "/buttons",
-        icon: (
-            <svg
-                className="w-5 h-5"
-                aria-hidden="true"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-            >
-                <path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>
-            </svg>
-        ),
-    },
-    {
-        name: "Modals",
-        url: "/modals",
-        icon: (
-            <svg
-                className="w-5 h-5"
-                aria-hidden="true"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-            >
-                <path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-            </svg>
-        ),
-    },
-    {
-        name: "Tables",
-        url: "/tables",
-        icon: (
-            <svg
-                className="w-5 h-5"
-                aria-hidden="true"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-            >
-                <path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
-            </svg>
-        ),
-    },
-    {
-        name: "Pages",
-        url: "/pages",
-        icon: (
-            <svg
-                className="w-5 h-5"
-                aria-hidden="true"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-            >
-                <path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
-            </svg>
-        ),
-        children: [
-            {
-                name: "Login",
-                url: "/login",
-            },
-            {
-                name: "Create Account",
-                url: "/create-account",
-            },
-            {
-                name: "Forgot Password",
-                url: "/forgot-password",
-            },
-            {
-                name: "404",
-                url: "/404",
-            },
-        ],
-    },
+    // {
+    //     name: "Cards",
+    //     url: "/cards",
+    //     icon: (
+    //         <svg
+    //             className="w-5 h-5"
+    //             aria-hidden="true"
+    //             fill="none"
+    //             strokeLinecap="round"
+    //             strokeLinejoin="round"
+    //             strokeWidth="2"
+    //             viewBox="0 0 24 24"
+    //             stroke="currentColor"
+    //         >
+    //             <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+    //         </svg>
+    //     ),
+    // },
+    // {
+    //     name: "Charts",
+    //     url: "/charts",
+    //     icon: (
+    //         <svg
+    //             className="w-5 h-5"
+    //             aria-hidden="true"
+    //             fill="none"
+    //             strokeLinecap="round"
+    //             strokeLinejoin="round"
+    //             strokeWidth="2"
+    //             viewBox="0 0 24 24"
+    //             stroke="currentColor"
+    //         >
+    //             <path d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
+    //             <path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
+    //         </svg>
+    //     ),
+    // },
+    // {
+    //     name: "Buttons",
+    //     url: "/buttons",
+    //     icon: (
+    //         <svg
+    //             className="w-5 h-5"
+    //             aria-hidden="true"
+    //             fill="none"
+    //             strokeLinecap="round"
+    //             strokeLinejoin="round"
+    //             strokeWidth="2"
+    //             viewBox="0 0 24 24"
+    //             stroke="currentColor"
+    //         >
+    //             <path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>
+    //         </svg>
+    //     ),
+    // },
+    // {
+    //     name: "Modals",
+    //     url: "/modals",
+    //     icon: (
+    //         <svg
+    //             className="w-5 h-5"
+    //             aria-hidden="true"
+    //             fill="none"
+    //             strokeLinecap="round"
+    //             strokeLinejoin="round"
+    //             strokeWidth="2"
+    //             viewBox="0 0 24 24"
+    //             stroke="currentColor"
+    //         >
+    //             <path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+    //         </svg>
+    //     ),
+    // },
+    // {
+    //     name: "Tables",
+    //     url: "/tables",
+    //     icon: (
+    //         <svg
+    //             className="w-5 h-5"
+    //             aria-hidden="true"
+    //             fill="none"
+    //             strokeLinecap="round"
+    //             strokeLinejoin="round"
+    //             strokeWidth="2"
+    //             viewBox="0 0 24 24"
+    //             stroke="currentColor"
+    //         >
+    //             <path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+    //         </svg>
+    //     ),
+    // },
+    // {
+    //     name: "Pages",
+    //     url: "/pages",
+    //     icon: (
+    //         <svg
+    //             className="w-5 h-5"
+    //             aria-hidden="true"
+    //             fill="none"
+    //             strokeLinecap="round"
+    //             strokeLinejoin="round"
+    //             strokeWidth="2"
+    //             viewBox="0 0 24 24"
+    //             stroke="currentColor"
+    //         >
+    //             <path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+    //         </svg>
+    //     ),
+    //     children: [
+    //         {
+    //             name: "Login",
+    //             url: "/login",
+    //         },
+    //         {
+    //             name: "Create Account",
+    //             url: "/create-account",
+    //         },
+    //         {
+    //             name: "Forgot Password",
+    //             url: "/forgot-password",
+    //         },
+    //         {
+    //             name: "404",
+    //             url: "/404",
+    //         },
+    //     ],
+    // },
 ]
 
 // Side bar menu item

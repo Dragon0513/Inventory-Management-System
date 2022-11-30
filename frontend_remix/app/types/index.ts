@@ -43,14 +43,19 @@ export interface ProductImage {
         }
     }
 }
-export interface ProductStore {
-    data: {
-        id: number
-        attributes: {
-            name: string
-            address: string
-        }
+export interface ProductStoreProperties {
+    id: number
+    attributes: {
+        name: string
+        address: string
     }
+}
+export interface ProductStore {
+    data: ProductStoreProperties
+}
+
+export interface ProductStores {
+    data: ProductStoreProperties[]
 }
 
 export interface Product {
