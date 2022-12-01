@@ -2,6 +2,7 @@ export interface Category {
     id: number
     attributes: {
         name: string
+        products?: ProductType
     }
 }
 export interface Categories {

@@ -86,7 +86,7 @@ export const action: ActionFunction = async ({ request, params }) => {
                 },
             }
         )
-        return redirect(`/products/list`)
+        return redirect(`/products/all`)
     } catch (error) {
         const err = error as AxiosError
 
@@ -317,7 +317,7 @@ function SingleProduct() {
                                     className="animate-spin"
                                 />
                             ) : (
-                                "Save"
+                                "Update"
                             )}
                         </Button>
                     </div>
