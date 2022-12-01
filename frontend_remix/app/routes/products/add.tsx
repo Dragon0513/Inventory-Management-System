@@ -1,7 +1,23 @@
 import type { Categories, ProductStores } from "~/types"
-import type { ActionFunction, LoaderFunction } from "@remix-run/node"
-import { json, redirect } from "@remix-run/node"
-import { Form, useActionData, useLoaderData } from "@remix-run/react"
+import type {
+    ActionFunction,
+    LoaderFunction,
+    // UploadHandler,
+} from "@remix-run/node"
+import {
+    json,
+    redirect,
+    // unstable_composeUploadHandlers as composeUploadHandlers,
+    // unstable_createMemoryUploadHandler as createMemoryUploadHandler,
+    // unstable_parseMultipartFormData as parseMultipartFormData,
+} from "@remix-run/node"
+import {
+    Form,
+    useActionData,
+    useLoaderData,
+    useTransition,
+} from "@remix-run/react"
+import { AiOutlineLoading3Quarters } from "react-icons/ai"
 import type { AxiosError } from "axios"
 import axios from "axios"
 import Button from "~/components/Button"
@@ -55,6 +71,37 @@ type ActionData = {
 const badRequest = (data: ActionData) => json(data, { status: 400 })
 
 export const action: ActionFunction = async ({ request }) => {
+    const jwt = await getUserJwt(request)
+    // const uploadHandler: UploadHandler = composeUploadHandlers(
+    //     async ({ name, contentType, data, filename }) => {
+    //         if (name !== "files") {
+    //             return undefined
+    //         }
+    //         try {
+    //             console.log("uploading ", name, contentType, filename, data)
+    //             const formData = new FormData()
+    //             formData.append("file", data, filename)
+    //             const uploadResponse = await axios.post(
+    //                 `${SERVER_URL}/api/upload`,
+    //                 formData,
+    //                 {
+    //                     headers: {
+    //                         "Content-Type": "multipart/form-data",
+    //                         Authorization: `Bearer ${jwt}`,
+    //                     },
+    //                 }
+    //             )
+    //             const imageData = uploadResponse.data
+    //             console.log("files", imageData)
+    //             return imageData
+    //         } catch (error) {
+    //             const err = error as AxiosError
+    //             console.log(err.response?.data)
+    //             return err
+    //         }
+    //     },
+    //     createMemoryUploadHandler()
+    // )
     const form = await request.formData()
     const name = form.get("name")
     const description = form.get("description")
@@ -92,9 +139,10 @@ export const action: ActionFunction = async ({ request }) => {
 
     if (Object.values(fieldErrors).some(Boolean))
         return badRequest({ fieldErrors, fields })
+
     // console.log("fields", fields)
-    // console.log("files ", files)
-    const jwt = await getUserJwt(request)
+    // console.log("files", files)
+
     // try {
     //     let formData = new FormData()
     //     formData.append("files", files)
@@ -164,6 +212,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 function Add() {
     const actionData = useActionData<ActionData>()
     const loaderData = useLoaderData<LoaderData>()
+    const transition = useTransition()
 
     return (
         <main className="h-full pb-16 overflow-y-auto">
@@ -273,7 +322,7 @@ function Add() {
                                 ) : null}
                             </label>
 
-                            <label className="block text-sm">
+                            {/* <label className="block text-sm">
                                 <span className="text-gray-700 dark:text-gray-400">
                                     Image
                                 </span>
@@ -283,7 +332,7 @@ function Add() {
                                     name="files"
                                     className="block w-full mt-1 text-sm dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
                                 />
-                            </label>
+                            </label> */}
                         </div>
                     </div>
                     <div className="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800 lg:w-1/4">
@@ -324,8 +373,19 @@ function Add() {
                             </select>
                         </label>
 
-                        <Button className="mt-8 w-full" type="submit">
-                            Save
+                        <Button
+                            className="mt-8 w-full flex items-center justify-center"
+                            type="submit"
+                            disabled={transition.state === "submitting"}
+                        >
+                            {transition.state !== "idle" ? (
+                                <AiOutlineLoading3Quarters
+                                    size="1.5rem"
+                                    className="animate-spin"
+                                />
+                            ) : (
+                                "Save"
+                            )}
                         </Button>
                     </div>
                 </Form>

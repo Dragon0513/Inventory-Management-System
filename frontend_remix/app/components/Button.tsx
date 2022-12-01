@@ -7,11 +7,13 @@ function Button({
     className,
     children,
     type,
+    disabled,
 }: {
     href?: string
     className?: string
     children: React.ReactNode
     type?: "button" | "submit" | "reset"
+    disabled?: boolean
 }) {
     const style = classNames(
         "px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple",
@@ -25,7 +27,7 @@ function Button({
                     {children}
                 </Link>
             ) : (
-                <button className={style} type={type}>
+                <button className={style} type={type} disabled={disabled}>
                     {children}
                 </button>
             )}
