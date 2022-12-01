@@ -1,28 +1,22 @@
-import type { Categories, ProductStores } from "~/types"
+import type { Categories, Product, ProductStores } from "~/types"
 import type {
     ActionFunction,
     LoaderFunction,
     MetaFunction,
-    // UploadHandler,
 } from "@remix-run/node"
-import {
-    json,
-    redirect,
-    // unstable_composeUploadHandlers as composeUploadHandlers,
-    // unstable_createMemoryUploadHandler as createMemoryUploadHandler,
-    // unstable_parseMultipartFormData as parseMultipartFormData,
-} from "@remix-run/node"
+import { json, redirect } from "@remix-run/node"
 import {
     Form,
     useActionData,
     useLoaderData,
+    useParams,
     useTransition,
 } from "@remix-run/react"
-import { AiOutlineLoading3Quarters } from "react-icons/ai"
 import type { AxiosError } from "axios"
 import axios from "axios"
-import Button from "~/components/Button"
 import config from "~/config"
+import Button from "~/components/Button"
+import { AiOutlineLoading3Quarters } from "react-icons/ai"
 import { getUserJwt } from "~/utils/session.server"
 import type { ActionData } from "./utils"
 import {
@@ -34,42 +28,8 @@ import {
 
 const SERVER_URL = config.SERVER_URL
 
-export const meta: MetaFunction = () => ({
-    title: "Add new product",
-})
-
-export const action: ActionFunction = async ({ request }) => {
+export const action: ActionFunction = async ({ request, params }) => {
     const jwt = await getUserJwt(request)
-    // const uploadHandler: UploadHandler = composeUploadHandlers(
-    //     async ({ name, contentType, data, filename }) => {
-    //         if (name !== "files") {
-    //             return undefined
-    //         }
-    //         try {
-    //             console.log("uploading ", name, contentType, filename, data)
-    //             const formData = new FormData()
-    //             formData.append("file", data, filename)
-    //             const uploadResponse = await axios.post(
-    //                 `${SERVER_URL}/api/upload`,
-    //                 formData,
-    //                 {
-    //                     headers: {
-    //                         "Content-Type": "multipart/form-data",
-    //                         Authorization: `Bearer ${jwt}`,
-    //                     },
-    //                 }
-    //             )
-    //             const imageData = uploadResponse.data
-    //             console.log("files", imageData)
-    //             return imageData
-    //         } catch (error) {
-    //             const err = error as AxiosError
-    //             console.log(err.response?.data)
-    //             return err
-    //         }
-    //     },
-    //     createMemoryUploadHandler()
-    // )
     const form = await request.formData()
     const name = form.get("name")
     const description = form.get("description")
@@ -77,7 +37,6 @@ export const action: ActionFunction = async ({ request }) => {
     const quantity = form.get("quantity")
     const categories = form.getAll("categories")
     const store = form.get("stores")
-    // const files = form.get("files")
     if (
         typeof name !== "string" ||
         typeof description !== "string" ||
@@ -108,38 +67,14 @@ export const action: ActionFunction = async ({ request }) => {
     if (Object.values(fieldErrors).some(Boolean))
         return badRequest({ fieldErrors, fields })
 
-    // console.log("fields", fields)
-    // console.log("files", files)
-
-    // try {
-    //     let formData = new FormData()
-    //     formData.append("files", files)
-    //     const uploadResponse = await axios.post(
-    //         `${SERVER_URL}/api/upload`,
-    //         formData,
-    //         {
-    //             headers: {
-    //                 "Content-Type": "multipart/form-data",
-    //                 Authorization: `Bearer ${jwt}`,
-    //             },
-    //         }
-    //     )
-    //     const imageData = uploadResponse.data
-    //     console.log("files", imageData)
-    // } catch (error) {
-    //     const err = error as AxiosError
-    //     console.log(err)
-    // }
-
     try {
-        await axios.post(
-            `${SERVER_URL}/api/products`,
+        await axios.put(
+            `${SERVER_URL}/api/products/${params.productId}`,
             {
                 data: {
                     name,
                     quantity,
                     description,
-                    // image: -3474481,
                     categories,
                     store,
                     price,
@@ -165,28 +100,54 @@ export const action: ActionFunction = async ({ request }) => {
 }
 
 type LoaderData = {
+    product: { data: Product }
     categories: Categories
     stores: ProductStores
 }
 
-export const loader: LoaderFunction = async ({ request }) => {
-    const catResponse = await axios.get(`${SERVER_URL}/api/categories`)
-    const categories = catResponse.data
-    const storeResponse = await axios.get(`${SERVER_URL}/api/stores`)
-    const stores = storeResponse.data
-    return json({ categories, stores } as LoaderData)
+export const loader: LoaderFunction = async ({ params }) => {
+    try {
+        const res = await axios.get(
+            `${SERVER_URL}/api/products/${params.productId}?populate=categories,store`
+        )
+        const product = res.data
+        const catResponse = await axios.get(`${SERVER_URL}/api/categories`)
+        const categories = catResponse.data
+        const storeResponse = await axios.get(`${SERVER_URL}/api/stores`)
+        const stores = storeResponse.data
+        const data: LoaderData = { product, categories, stores }
+        return json(data)
+    } catch (error) {
+        throw new Response("Something is wrong", {
+            status: 404,
+        })
+    }
 }
 
-function Add() {
-    const actionData = useActionData<ActionData>()
-    const loaderData = useLoaderData<LoaderData>()
-    const transition = useTransition()
+export const meta: MetaFunction = ({
+    data,
+}: {
+    data: LoaderData | undefined
+}) => {
+    if (!data) {
+        return {
+            title: "Wrong path",
+        }
+    }
+    return {
+        title: `${data.product.data.attributes.name}`,
+    }
+}
 
+function SingleProduct() {
+    const loaderData = useLoaderData<LoaderData>()
+    const actionData = useActionData<ActionData>()
+    const transition = useTransition()
     return (
         <main className="h-full pb-16 overflow-y-auto">
             <div className="container px-6 mx-auto grid">
                 <h2 className="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-                    New product
+                    Update product
                 </h2>
                 <div id="form-error-message">
                     {actionData?.formError ? (
@@ -195,11 +156,7 @@ function Add() {
                         </p>
                     ) : null}
                 </div>
-                <Form
-                    method="post"
-                    className="flex flex-col lg:flex-row gap-5"
-                    encType="multipart/form-data"
-                >
+                <Form method="post" className="flex flex-col lg:flex-row gap-5">
                     <div className="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800 w-full">
                         <label className="block text-sm">
                             <span className="text-gray-700 dark:text-gray-400">
@@ -209,7 +166,9 @@ function Add() {
                                 type="text"
                                 name="name"
                                 className="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                                defaultValue={actionData?.fields?.name}
+                                defaultValue={
+                                    loaderData.product.data.attributes.name
+                                }
                                 aria-invalid={Boolean(
                                     actionData?.fieldErrors?.name
                                 )}
@@ -234,7 +193,10 @@ function Add() {
                                 name="description"
                                 className="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                                 rows={3}
-                                defaultValue={actionData?.fields?.description}
+                                defaultValue={
+                                    loaderData.product.data.attributes
+                                        .description
+                                }
                             ></textarea>
                         </label>
 
@@ -247,7 +209,9 @@ function Add() {
                                     type="text"
                                     name="price"
                                     className="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                                    defaultValue={actionData?.fields?.price}
+                                    defaultValue={
+                                        loaderData.product.data.attributes.price
+                                    }
                                     aria-invalid={Boolean(
                                         actionData?.fieldErrors?.price
                                     )}
@@ -273,7 +237,10 @@ function Add() {
                                     type="text"
                                     name="quantity"
                                     className="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                                    defaultValue={actionData?.fields?.quantity}
+                                    defaultValue={
+                                        loaderData.product.data.attributes
+                                            .quantity
+                                    }
                                     aria-invalid={Boolean(
                                         actionData?.fieldErrors?.quantity
                                     )}
@@ -289,18 +256,6 @@ function Add() {
                                     </span>
                                 ) : null}
                             </label>
-
-                            {/* <label className="block text-sm">
-                                <span className="text-gray-700 dark:text-gray-400">
-                                    Image
-                                </span>
-                                <input
-                                    type="file"
-                                    accept="image/*"
-                                    name="files"
-                                    className="block w-full mt-1 text-sm dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
-                                />
-                            </label> */}
                         </div>
                     </div>
                     <div className="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800 lg:w-1/4">
@@ -318,6 +273,9 @@ function Add() {
                                     <option
                                         key={category.id}
                                         value={category.id}
+                                        selected={loaderData.product?.data?.attributes?.categories.data.some(
+                                            (cat) => cat.id === category.id
+                                        )}
                                     >
                                         {category.attributes.name}
                                     </option>
@@ -334,7 +292,14 @@ function Add() {
                                 className="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                             >
                                 {loaderData.stores.data.map((store) => (
-                                    <option key={store.id} value={store.id}>
+                                    <option
+                                        key={store.id}
+                                        value={store.id}
+                                        selected={
+                                            loaderData.product?.data?.attributes
+                                                ?.store?.data?.id === store.id
+                                        }
+                                    >
                                         {store.attributes.name}
                                     </option>
                                 ))}
@@ -362,4 +327,11 @@ function Add() {
     )
 }
 
-export default Add
+export default SingleProduct
+
+export function ErrorBoundary() {
+    const { productId } = useParams()
+    return (
+        <div className="error-container">{`Something is wrong to load ${productId} this ID's product. Sorry.`}</div>
+    )
+}

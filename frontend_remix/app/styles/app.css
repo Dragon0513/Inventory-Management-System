@@ -1327,12 +1327,20 @@ select {
     background-color: rgb(66 56 157 / var(--tw-bg-opacity));
 }
 
+.bg-transparent {
+    background-color: transparent;
+}
+
 .bg-opacity-50 {
     --tw-bg-opacity: 0.5;
 }
 
 .bg-opacity-10 {
     --tw-bg-opacity: 0.1;
+}
+
+.bg-none {
+    background-image: none;
 }
 
 .object-cover {
@@ -1627,6 +1635,10 @@ select {
 .hover\:bg-gray-100:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(244 245 247 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-transparent:hover {
+    background-color: transparent;
 }
 
 .hover\:text-gray-800:hover {

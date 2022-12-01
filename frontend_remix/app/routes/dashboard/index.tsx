@@ -17,45 +17,51 @@ interface LoaderData {
 }
 
 export const loader: LoaderFunction = async () => {
-    const productRes = await axios.get(`${SERVER_URL}/api/products`)
-    const categoriesRes = await axios.get(`${SERVER_URL}/api/categories`)
-    const saleRes = await axios.get(`${SERVER_URL}/api/sales?populate=product`)
-    const products: ProductType = productRes.data
-    const categories: Categories = categoriesRes.data
-    const sales: Sales = saleRes.data
-    const data: LoaderData = {
-        "Products Value":
-            "৳ " +
-            numeral(
-                products.data.reduce(
-                    (total, item) =>
-                        total +
-                        item.attributes.price * item.attributes.quantity,
-                    0
-                )
-            ).format("0,0"),
-        "Total Products": products.data.length + "",
-        "Total Categories": categories.data.length + "",
-        "Sales Revenue":
-            "৳ " +
-            numeral(
-                sales.data.reduce(
-                    (total, sale) =>
-                        total +
-                        sale.attributes.product.data.attributes.price *
-                            sale.attributes.quantity,
-                    0
-                )
-            ).format("0,0"),
+    try {
+        const productRes = await axios.get(`${SERVER_URL}/api/products`)
+        const categoriesRes = await axios.get(`${SERVER_URL}/api/categories`)
+        const saleRes = await axios.get(
+            `${SERVER_URL}/api/sales?populate=product`
+        )
+        const products: ProductType = productRes.data
+        const categories: Categories = categoriesRes.data
+        const sales: Sales = saleRes.data
+        const data: LoaderData = {
+            "Products Value":
+                "৳ " +
+                numeral(
+                    products.data.reduce(
+                        (total, item) =>
+                            total +
+                            item.attributes.price * item.attributes.quantity,
+                        0
+                    )
+                ).format("0,0"),
+            "Total Products": products.data.length + "",
+            "Total Categories": categories.data.length + "",
+            "Sales Revenue":
+                "৳ " +
+                numeral(
+                    sales.data.reduce(
+                        (total, sale) =>
+                            total +
+                            sale.attributes?.product?.data?.attributes?.price *
+                                sale.attributes?.quantity,
+                        0
+                    )
+                ).format("0,0"),
+        }
+        return json(data)
+    } catch (error) {
+        throw new Error("Something is wrong")
     }
-    return json(data)
 }
 
 const cards = [
     {
         id: 1,
         title: "Sales Revenue",
-        value: "$ 6389",
+        value: "$0",
         icon: (
             <svg
                 xmlns="http://www.w3.org/2000/svg"
