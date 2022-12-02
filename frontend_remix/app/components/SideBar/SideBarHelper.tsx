@@ -7,6 +7,7 @@ import {
     MdOutlineSpaceDashboard,
 } from "react-icons/md"
 import { classNames } from "../../utils"
+import { useAuthProvider } from "~/context/AuthProvider"
 
 export interface sideBarMenuChildType {
     name: string
@@ -74,6 +75,27 @@ export const sideBarMenus = [
 
 // Side bar menu item
 export function SideBarMenuItem({ item }: { item: sideBarMenuType }) {
+    const { role } = useAuthProvider()
+    console.log("Role in sidebar", role)
+    if (
+        item.name == "Dashboard" &&
+        role?.name !== "Admin" &&
+        role?.name !== "Moderator"
+    )
+        return null
+    if (
+        item.name == "Products" &&
+        role?.name !== "Admin" &&
+        role?.name !== "Moderator"
+    )
+        return null
+    if (
+        item.name == "Categories" &&
+        role?.name !== "Admin" &&
+        role?.name !== "Moderator"
+    )
+        return null
+    if (item.name == "Stores" && role?.name !== "Admin") return null
     return (
         <li className="relative px-6 py-3">
             {item.children ? (
