@@ -1,28 +1,23 @@
 import type { LoaderFunction, MetaFunction } from "@remix-run/node"
-import type { ProductType } from "~/types"
+import type { ProductStores } from "~/types"
 import { json } from "@remix-run/node"
 import { Form, Link, useLoaderData } from "@remix-run/react"
 import axios from "axios"
 import config from "~/config"
 import Button from "~/components/Button"
-import numeral from "numeral"
 import { getUserJwt } from "~/utils/session.server"
 
 const SERVER_URL = config.SERVER_URL
 
 export const meta: MetaFunction = () => ({
-    title: "Products",
+    title: "Stores",
 })
-
-// type ActionData = {
-//     formError?: string
-// }
 
 export const action: LoaderFunction = async ({ request }) => {
     const jwt = await getUserJwt(request)
     let formData = await request.formData()
     let action = formData.get("action")
-    let productId = formData.get("id")
+    let storeId = formData.get("id")
     switch (action) {
         case "update": {
             // do your update
@@ -33,14 +28,12 @@ export const action: LoaderFunction = async ({ request }) => {
             // do your delete
             // return deleteStuff(formData);
             try {
-                await axios.delete(`${SERVER_URL}/api/products/${productId}`, {
+                await axios.delete(`${SERVER_URL}/api/stores/${storeId}`, {
                     headers: {
                         Authorization: `Bearer ${jwt}`,
                     },
                 })
-                // const deleteProduct = deleteResponse.data
                 return null
-                // deleteResponse.
             } catch (error) {
                 return null
             }
@@ -53,14 +46,14 @@ export const action: LoaderFunction = async ({ request }) => {
 
 export const loader: LoaderFunction = async () => {
     const response = await axios.get(
-        `${SERVER_URL}/api/products?populate=store,categories,image`
+        `${SERVER_URL}/api/stores?populate=products`
     )
-    const products: ProductType = response.data
-    return json(products)
+    const stores: ProductStores = response.data
+    return json(stores)
 }
 
 function ProductList() {
-    const products = useLoaderData<ProductType>()
+    const stores = useLoaderData<ProductStores>()
     // console.log(products)
     return (
         <main className="h-full pb-16 overflow-y-auto">
@@ -68,10 +61,10 @@ function ProductList() {
                 {/* <!-- With actions --> */}
                 <div className="flex justify-between items-center">
                     <h2 className="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-                        Products
+                        Stores
                     </h2>
 
-                    <Button href="/products/add" className="px-5">
+                    <Button href="/stores/add" className="px-5">
                         Add new
                     </Button>
                 </div>
@@ -81,85 +74,40 @@ function ProductList() {
                             <thead>
                                 <tr className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                                     <th className="px-4 py-3">Name</th>
-                                    <th className="px-4 py-3">Quantity</th>
-                                    <th className="px-4 py-3">Price</th>
-                                    <th className="px-4 py-3">Store</th>
-                                    <th className="px-4 py-3">Categories</th>
+                                    <th className="px-4 py-3">Address</th>
+                                    <th className="px-4 py-3">Products</th>
                                     <th className="px-4 py-3">Action</th>
                                 </tr>
                             </thead>
                             <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                                {products?.data?.map((product) => (
+                                {stores?.data?.map((store) => (
                                     <tr
                                         className="text-gray-700 dark:text-gray-400"
-                                        key={product.id}
+                                        key={store.id}
                                     >
                                         <td className="px-4 py-3">
                                             <div className="flex items-center text-sm">
-                                                {/* <!-- Avatar with inset shadow --> */}
-                                                {/* <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                                    <img
-                                                        className="object-cover w-full h-full rounded-full"
-                                                        src={
-                                                            SERVER_URL +
-                                                            product.attributes
-                                                                ?.image?.data
-                                                                ?.attributes
-                                                                ?.formats
-                                                                .thumbnail.url
-                                                        }
-                                                        alt=""
-                                                        loading="lazy"
-                                                    />
-                                                    <div
-                                                        className="absolute inset-0 rounded-full shadow-inner"
-                                                        aria-hidden="true"
-                                                    ></div>
-                                                </div> */}
                                                 <div>
                                                     <p className="font-semibold">
-                                                        {
-                                                            product.attributes
-                                                                ?.name
-                                                        }
+                                                        {store.attributes.name}
                                                     </p>
-                                                    {product.attributes
-                                                        ?.quantity <= 2 ? (
-                                                        <p className="text-xs text-red-600 dark:text-red-400">
-                                                            Need to restock
-                                                        </p>
-                                                    ) : null}
                                                 </div>
                                             </div>
                                         </td>
                                         <td className="px-4 py-3 text-sm">
-                                            {product.attributes?.quantity}
-                                        </td>
-                                        <td className="px-4 py-3 text-xs">
-                                            ৳{" "}
-                                            {numeral(
-                                                product.attributes?.price
-                                            ).format("0,0")}
+                                            {store.attributes.address}
                                         </td>
                                         <td className="px-4 py-3 text-sm">
                                             {
-                                                product.attributes?.store?.data
-                                                    ?.attributes?.name
+                                                store.attributes.products?.data
+                                                    .length
                                             }
-                                        </td>
-                                        <td className="px-4 py-3 text-sm">
-                                            {product.attributes?.categories?.data
-                                                ?.map(
-                                                    (category) =>
-                                                        category.attributes.name
-                                                )
-                                                .join(", ")}
                                         </td>
                                         <td className="px-4 py-3">
                                             <div className="flex items-center space-x-4 text-sm">
                                                 <Link
                                                     className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
-                                                    to={`/products/${product.id}`}
+                                                    to={`/stores/${store.id}`}
                                                 >
                                                     <svg
                                                         className="w-5 h-5"
@@ -175,7 +123,7 @@ function ProductList() {
                                                     onSubmit={(event) => {
                                                         if (
                                                             !confirm(
-                                                                "If you delete this product, you'll also delete the sales data. Are you sure?"
+                                                                "If you delete this store, you'll also delete the store entity on the product information. Are you sure?"
                                                             )
                                                         ) {
                                                             event.preventDefault()
@@ -185,7 +133,7 @@ function ProductList() {
                                                     <input
                                                         type="hidden"
                                                         name="id"
-                                                        value={product.id}
+                                                        value={store.id}
                                                     />
                                                     <button
                                                         className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"

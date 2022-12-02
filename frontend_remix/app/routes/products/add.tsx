@@ -151,7 +151,7 @@ export const action: ActionFunction = async ({ request }) => {
                 },
             }
         )
-        return redirect(`/products/list`)
+        return redirect(`/products/all`)
     } catch (error) {
         const err = error as AxiosError
 

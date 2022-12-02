@@ -49,6 +49,7 @@ export interface ProductStoreProperties {
     attributes: {
         name: string
         address: string
+        products?: ProductType
     }
 }
 export interface ProductStore {
