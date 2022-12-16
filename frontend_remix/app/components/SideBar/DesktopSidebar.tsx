@@ -9,7 +9,7 @@ function DesktopSidebar() {
                     className="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
                     to="/"
                 >
-                    Windmill
+                    IMS - Fantastic 5
                 </Link>
                 <ul className="mt-6">
                     {sideBarMenus.map((item, index) => (

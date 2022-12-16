@@ -3,9 +3,10 @@ import { NavLink } from "react-router-dom"
 import { HiOutlineBuildingStorefront } from "react-icons/hi2"
 import {
     MdOutlineCategory,
-    MdOutlineProductionQuantityLimits,
     MdOutlineSpaceDashboard,
+    MdPointOfSale,
 } from "react-icons/md"
+import { BsCart2 } from "react-icons/bs"
 import { classNames } from "../../utils"
 import { useAuthProvider } from "~/context/AuthProvider"
 
@@ -27,16 +28,31 @@ export const sideBarMenus = [
         icon: <MdOutlineSpaceDashboard size="1.2rem" />,
     },
     {
+        name: "Sales",
+        url: "/sales/all",
+        icon: <MdPointOfSale size="1.2rem" />,
+        children: [
+            {
+                name: "Sales list",
+                url: "/sales/all",
+            },
+            {
+                name: "Add new sale",
+                url: "/sales/add",
+            },
+        ],
+    },
+    {
         name: "Products",
         url: "/products/all",
-        icon: <MdOutlineProductionQuantityLimits size="1.2rem" />,
+        icon: <BsCart2 size="1.2rem" />,
         children: [
             {
                 name: "Product list",
                 url: "/products/all",
             },
             {
-                name: "Add new",
+                name: "Add new product",
                 url: "/products/add",
             },
         ],
@@ -51,7 +67,7 @@ export const sideBarMenus = [
                 url: "/categories/all",
             },
             {
-                name: "Add new",
+                name: "Add new category",
                 url: "/categories/add",
             },
         ],
@@ -66,7 +82,7 @@ export const sideBarMenus = [
                 url: "/stores/all",
             },
             {
-                name: "Add new",
+                name: "Add new store",
                 url: "/stores/add",
             },
         ],
