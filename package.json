@@ -36,5 +36,9 @@
         "eslint-config-prettier": "^8.5.0",
         "husky": "^8.0.1",
         "prettier": "^2.7.1"
+    },
+    "dependencies": {
+        "moment": "^2.29.4",
+        "react-to-print": "^2.14.10"
     }
 }

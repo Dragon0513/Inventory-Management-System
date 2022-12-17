@@ -124,6 +124,8 @@ export interface User {
 export interface Sale {
     id: number
     attributes: {
+        createdAt: string
+        updatedAt: string
         quantity: number
         product: {
             data: Product

@@ -8,6 +8,7 @@ function Button({
     children,
     type,
     disabled,
+    ...props
 }: {
     href?: string
     className?: string
@@ -23,11 +24,16 @@ function Button({
     return (
         <>
             {href ? (
-                <Link to={href} className={style}>
+                <Link to={href} className={style} {...props}>
                     {children}
                 </Link>
             ) : (
-                <button className={style} type={type} disabled={disabled}>
+                <button
+                    className={style}
+                    type={type}
+                    disabled={disabled}
+                    {...props}
+                >
                     {children}
                 </button>
             )}

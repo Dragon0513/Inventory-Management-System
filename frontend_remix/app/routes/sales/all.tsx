@@ -53,7 +53,6 @@ export const loader: LoaderFunction = async () => {
 
 function ProductList() {
     const sales = useLoaderData<Sales>()
-    console.log("Sale items ", sales.data)
     return (
         <main className="h-full pb-16 overflow-y-auto">
             <div className="container grid px-6 mx-auto">

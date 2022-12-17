@@ -6,7 +6,7 @@ import {
     MdOutlineSpaceDashboard,
     MdPointOfSale,
 } from "react-icons/md"
-import { BsCart2 } from "react-icons/bs"
+import { BsCart2, BsFileEarmarkBarGraph } from "react-icons/bs"
 import { classNames } from "../../utils"
 import { useAuthProvider } from "~/context/AuthProvider"
 
@@ -41,6 +41,11 @@ export const sideBarMenus = [
                 url: "/sales/add",
             },
         ],
+    },
+    {
+        name: "Sales Report",
+        url: "/report",
+        icon: <BsFileEarmarkBarGraph size="1.2rem" />,
     },
     {
         name: "Products",
@@ -92,7 +97,6 @@ export const sideBarMenus = [
 // Side bar menu item
 export function SideBarMenuItem({ item }: { item: sideBarMenuType }) {
     const { role } = useAuthProvider()
-    console.log("Role in sidebar", role)
     if (
         item.name == "Dashboard" &&
         role?.name !== "Admin" &&
@@ -116,7 +120,7 @@ export function SideBarMenuItem({ item }: { item: sideBarMenuType }) {
         <li className="relative px-6 py-3">
             {item.children ? (
                 <>
-                    <Disclosure defaultOpen>
+                    <Disclosure>
                         <Disclosure.Button className="w-full">
                             <button
                                 className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
