@@ -28,22 +28,69 @@ export const loader: LoaderFunction = async ({ request }) => {
 }
 
 function Report() {
+    const componentRef = React.useRef(null)
+
     const sales = useLoaderData<Sales>()
+    const [renderSales, setRenderSales] = React.useState<Sales>(sales)
+    React.useEffect(() => {
+        setRenderSales(sales)
+    }, [sales])
+
     const totalSales = React.useMemo(() => {
-        return sales.data.reduce((acc, sale) => {
+        return renderSales?.data.reduce((acc, sale) => {
             return (
                 acc +
                 sale.attributes.quantity *
                     sale.attributes.product.data.attributes.price
             )
         }, 0)
-    }, [sales])
-    const componentRef = React.useRef(null)
-    // const [reportBy, setReportBy] = React.useState("all")
+    }, [renderSales])
 
-    // const handleReportByChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    //     setReportBy(e.target.value)
-    // }
+    const [reportBy, setReportBy] = React.useState("all")
+
+    const handleReportByChange = React.useCallback(
+        (e: React.ChangeEvent<HTMLSelectElement>) => {
+            setReportBy(e.target.value)
+        },
+        []
+    )
+
+    React.useEffect(() => {
+        if (reportBy === "all") {
+            setRenderSales(sales)
+        } else if (reportBy === "daily") {
+            const dailySales = sales.data.filter((sale) => {
+                return moment(sale.attributes.createdAt).isSame(moment(), "day")
+            })
+            setRenderSales({ data: dailySales })
+        } else if (reportBy === "weekly") {
+            const weeklySales = sales.data.filter((sale) => {
+                return moment(sale.attributes.createdAt).isSame(
+                    moment(),
+                    "week"
+                )
+            })
+            setRenderSales({ ...sales, data: weeklySales })
+        } else if (reportBy === "monthly") {
+            const monthlySales = sales.data.filter((sale) => {
+                return moment(sale.attributes.createdAt).isSame(
+                    moment(),
+                    "month"
+                )
+            })
+            setRenderSales({ data: monthlySales })
+        } else if (reportBy === "yearly") {
+            const yearlySales = sales.data.filter((sale) => {
+                return moment(sale.attributes.createdAt).isSame(
+                    moment(),
+                    "year"
+                )
+            })
+            setRenderSales({ data: yearlySales })
+        }
+    }, [reportBy, sales])
+    console.log("renderSales", renderSales)
+
     return (
         <Layout>
             <main className="h-full pb-16 overflow-y-auto" ref={componentRef}>
@@ -55,7 +102,8 @@ function Report() {
                         </h2>
 
                         <select
-                            // onChange={handleReportByChange}
+                            onChange={handleReportByChange}
+                            defaultValue={reportBy}
                             className=" print:hidden text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-multiselect focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                         >
                             <option value="all">All</option>
@@ -82,8 +130,8 @@ function Report() {
                                     </tr>
                                 </thead>
                                 <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                                    {sales?.data?.length ? (
-                                        sales?.data?.map((saleItem) => (
+                                    {renderSales?.data?.length ? (
+                                        renderSales?.data?.map((saleItem) => (
                                             <tr
                                                 className="text-gray-700 dark:text-gray-400"
                                                 key={saleItem.id}
