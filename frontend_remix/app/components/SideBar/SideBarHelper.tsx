@@ -98,12 +98,6 @@ export const sideBarMenus = [
 export function SideBarMenuItem({ item }: { item: sideBarMenuType }) {
     const { role } = useAuthProvider()
     if (
-        item.name == "Dashboard" &&
-        role?.name !== "Admin" &&
-        role?.name !== "Moderator"
-    )
-        return null
-    if (
         item.name == "Products" &&
         role?.name !== "Admin" &&
         role?.name !== "Moderator"
@@ -116,6 +110,18 @@ export function SideBarMenuItem({ item }: { item: sideBarMenuType }) {
     )
         return null
     if (item.name == "Stores" && role?.name !== "Admin") return null
+    if (
+        item.name == "Sales" &&
+        role?.name !== "Admin" &&
+        role?.name !== "Seller"
+    )
+        return null
+    if (
+        item.name == "Sales Report" &&
+        role?.name !== "Admin" &&
+        role?.name !== "Seller"
+    )
+        return null
     return (
         <li className="relative px-6 py-3">
             {item.children ? (

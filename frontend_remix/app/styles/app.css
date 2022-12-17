@@ -1389,6 +1389,14 @@ select {
     text-transform: uppercase;
 }
 
+.capitalize {
+    text-transform: capitalize;
+}
+
+.normal-case {
+    text-transform: none;
+}
+
 .leading-5 {
     line-height: 1.25rem;
 }
@@ -1686,6 +1694,10 @@ select {
 }
 
 @media print {
+    .print\:inline-block {
+        display: inline-block;
+    }
+
     .print\:hidden {
         display: none;
     }
