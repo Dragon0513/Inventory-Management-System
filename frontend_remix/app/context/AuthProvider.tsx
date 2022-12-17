@@ -17,7 +17,7 @@ function AuthProvider({
 export const useAuthProvider = () => {
     const context = React.useContext(AuthContext) as User
     if (context === undefined) {
-        throw new Error("useTheme must be used within a AuthProvider")
+        throw new Error("useAuthProvider must be used within a AuthProvider")
     }
     return context
 }

@@ -20,6 +20,7 @@ import ThemeProvider from "./context/ThemeContext"
 import styles from "./styles/app.css"
 import { getUser } from "./utils/session.server"
 import AuthProvider from "./context/AuthProvider"
+import TopProgressBarProvider from "./context/TopProgressBarProvider"
 
 export const links: LinksFunction = () => {
     return [{ rel: "stylesheet", href: styles }]
@@ -47,11 +48,13 @@ export default function App() {
     const data = useLoaderData<LoaderData>()
     return (
         <Document>
-            <ThemeProvider>
-                <AuthProvider user={data.user}>
-                    <Outlet />
-                </AuthProvider>
-            </ThemeProvider>
+            <TopProgressBarProvider>
+                <ThemeProvider>
+                    <AuthProvider user={data.user}>
+                        <Outlet />
+                    </AuthProvider>
+                </ThemeProvider>
+            </TopProgressBarProvider>
         </Document>
     )
 }
