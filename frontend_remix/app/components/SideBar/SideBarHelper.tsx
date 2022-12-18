@@ -126,7 +126,7 @@ export function SideBarMenuItem({ item }: { item: sideBarMenuType }) {
         <li className="relative px-6 py-3">
             {item.children ? (
                 <>
-                    <Disclosure>
+                    <Disclosure defaultOpen>
                         <Disclosure.Button className="w-full">
                             <button
                                 className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
