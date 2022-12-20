@@ -127,28 +127,23 @@ export function SideBarMenuItem({ item }: { item: sideBarMenuType }) {
             {item.children ? (
                 <>
                     <Disclosure defaultOpen>
-                        <Disclosure.Button className="w-full">
-                            <button
-                                className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                                aria-haspopup="true"
+                        <Disclosure.Button className="w-full inline-flex items-center text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                            <span className="inline-flex items-center">
+                                {item.icon}
+                            </span>
+                            <span className="ml-4">{item.name}</span>
+                            <svg
+                                className="w-4 h-4 ml-auto"
+                                aria-hidden="true"
+                                fill="none"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
                             >
-                                <span className="inline-flex items-center">
-                                    {item.icon}
-                                </span>
-                                <span className="ml-4">{item.name}</span>
-                                <svg
-                                    className="w-4 h-4 ml-auto"
-                                    aria-hidden="true"
-                                    fill="none"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
+                                <path d="M19 9l-7 7-7-7"></path>
+                            </svg>
                         </Disclosure.Button>
                         <Disclosure.Panel>
                             <ul
