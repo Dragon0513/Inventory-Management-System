@@ -127,7 +127,10 @@ export function SideBarMenuItem({ item }: { item: sideBarMenuType }) {
             {item.children ? (
                 <>
                     <Disclosure defaultOpen>
-                        <Disclosure.Button className="w-full inline-flex items-center text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                        <Disclosure.Button
+                            aria-label="sidebar-parent-menu"
+                            className="w-full inline-flex items-center text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                        >
                             <span className="inline-flex items-center">
                                 {item.icon}
                             </span>
@@ -184,6 +187,7 @@ export function SideBarMenuItem({ item }: { item: sideBarMenuType }) {
                     }
                     to={item.url}
                     end
+                    aria-label="sidebar-parent-menu"
                 >
                     {({ isActive }) => (
                         <>
