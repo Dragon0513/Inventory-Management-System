@@ -51,7 +51,6 @@ npm run strapi:dev
 ```
 
 An server will be run at http://localhost:1337
-Server admin will be run at http://localhost:1337/admin
 
 To run the frontend server:
 
@@ -65,7 +64,8 @@ Frontend server will be run at http://localhost:3000
 
 -   [Strapi](https://strapi.io/) - Strapi is the leading open-source headless CMS.
 -   [Remix](https://remix.run/) - Remix is a full stack web framework
--   [Npm](https://www.npmjs.com/) - Dependency Management
+-   [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework packed with classes
+-   [NodeJs](https://nodejs.org/en/) - Node.js® is an open-source, cross-platform JavaScript runtime environment.
 
 ## Credit
 
