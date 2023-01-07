@@ -4,22 +4,17 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "server": "cd backend && npm start",
-        "server:dev": "cd backend && npm run dev",
         "strapi:start": "cd strapi_backend && npm start",
         "strapi:dev": "cd strapi_backend && npm run develop",
-        "app": "cd frontend && npm run dev",
-        "app:build": "cd frontend && npm run build",
-        "app:preview": "cd frontend && npm run preview",
-        "remix": "cd frontend_remix && npm run dev",
-        "remix:build": "cd frontend_remix && npm run build",
-        "remix:preview": "cd frontend_remix && npm start",
-        "app:start": "cd frontend_remix && npm run preview",
+        "app": "cd frontend_remix && npm run dev",
+        "app:build": "cd frontend_remix && npm run build",
+        "app:preview": "cd frontend_remix && npm start",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
         "lint:check": "eslint .",
         "lint:fix": "eslint --fix .",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "setup": "npm i && cd strapi_backend && npm i && cd .. && cd frontend_remix && npm i"
     },
     "repository": {
         "type": "git",
