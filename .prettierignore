@@ -1,9 +1,10 @@
 node_modules
-backend/node_modules
-frontend/node_modules
-frontend/dist
+.husky
+.vscode
 frontend_remix/node_modules
 frontend_remix/build
+frontend_remix/.cache
+frontend_remix/coverage
+frontend_remix/styles
 frontend_remix/public/build
 strapi_backend/*
-frontend_remix/coverage

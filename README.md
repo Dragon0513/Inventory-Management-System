@@ -20,17 +20,46 @@ Run the followning command to install all the packages:
 npm run setup
 ```
 
+#### Setup environment variable
+
+Set the following environment variable to `strapi_backend` directory. Also, an example file is given with the name of `.env.example`:
+
+```
+HOST=0.0.0.0
+PORT=1337
+APP_KEYS="toBeModified1,toBeModified2"
+API_TOKEN_SALT=tobemodified
+ADMIN_JWT_SECRET=tobemodified
+JWT_SECRET=tobemodified
+```
+
+You can set the avobe environment variable as it is.
+
+Set the following environment variable to `frontend_remix` directory. Also, an example file is given with the name of `.env.example`:
+
+```
+SESSION_SECRET = "ANYTHING_YOU_WANT"
+SERVER_URL = "STRAPI_SERVER_URL_LIKE_http://localhost:1337"
+```
+
+#### Run 🏃🏻‍♂️
+
 To run the strapi backend server:
 
 ```
 npm run strapi:dev
 ```
 
+An server will be run at http://localhost:1337
+Server admin will be run at http://localhost:1337/admin
+
 To run the frontend server:
 
 ```
 npm run app
 ```
+
+Frontend server will be run at http://localhost:3000
 
 ## Built With 🏗️👷🏻
 
