@@ -26,4 +26,4 @@ jobs:
         cache: 'npm'
     - run: npm run setup
     - run: |
-          echo "${{ secrets.FRONTEND_ENV }}" > ./frontend_remix/.env
+          echo "${{ variables.FRONTEND_ENV }}" > ./frontend_remix/.env
