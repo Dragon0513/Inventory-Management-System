@@ -27,3 +27,5 @@ jobs:
     - run: npm run setup
     - run: |
           echo "${{ secrets.FRONTEND_ENV }}" > ./frontend_remix/.env
+    - run: |
+          echo "${{ secrets.BACKEND_ENV }}" > ./strapi_backend/.env
