@@ -1,6 +1,7 @@
 node_modules
 .husky
 .vscode
+.github
 frontend_remix/node_modules
 frontend_remix/build
 frontend_remix/.cache
