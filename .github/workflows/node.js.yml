@@ -29,3 +29,5 @@ jobs:
           echo "${{ secrets.FRONTEND_ENV }}" > ./frontend_remix/.env
     - run: |
           echo "${{ secrets.BACKEND_ENV }}" > ./strapi_backend/.env
+    - run: pm2 restart backend
+    - run: pm2 restart frontend
