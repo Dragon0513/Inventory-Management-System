@@ -5,6 +5,8 @@ import { RemixServer } from "@remix-run/react"
 import isbot from "isbot"
 import { renderToPipeableStream } from "react-dom/server"
 
+require("dotenv").config()
+
 const ABORT_DELAY = 5000
 
 export default function handleRequest(
