@@ -25,6 +25,5 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm run setup
-    - name: 'Create env file'
-        run: |
-          echo "${{ secrets.ENV_FILE }}" > .env
+    - run: |
+          echo "${{ secrets.FRONTEND_ENV }}" > ./frontend_remix/.env
