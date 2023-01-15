@@ -56,7 +56,7 @@ const userData = {
 
 const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
     return (
-        <MemoryRouter>
+        <MemoryRouter initialEntries={["/login"]}>
             <AuthProvider user={userData}>{children}</AuthProvider>
         </MemoryRouter>
     )

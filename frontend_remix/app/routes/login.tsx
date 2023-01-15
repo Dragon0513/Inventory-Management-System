@@ -1,14 +1,8 @@
 import type { ActionFunction, LoaderFunction } from "@remix-run/node"
 import { json, redirect } from "@remix-run/node"
-import {
-    Form,
-    useActionData,
-    useSearchParams,
-    useTransition,
-} from "@remix-run/react"
-import { AiOutlineLoading3Quarters } from "react-icons/ai"
+import { useActionData, useSearchParams, useTransition } from "@remix-run/react"
 import validator from "validator"
-import Button from "~/components/Button"
+import LoginForm from "~/components/Login/LoginForm"
 import { login, createUserSession, getUserId } from "~/utils/session.server"
 
 function validateEmail(email: unknown) {
@@ -39,15 +33,15 @@ function validateUrl(url: any) {
     return "/dashboard"
 }
 
-type ActionData = {
+export type ActionData = {
     formError?: string
     fieldErrors?: {
-        email: string | undefined
-        password: string | undefined
+        email?: string | undefined
+        password?: string | undefined
     }
     fields?: {
-        email: string
-        password: string
+        email?: string
+        password?: string
     }
 }
 
@@ -122,103 +116,11 @@ function Login() {
                             <h1 className="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">
                                 Login
                             </h1>
-                            <Form method="post">
-                                <input
-                                    type="hidden"
-                                    name="redirectTo"
-                                    value={
-                                        searchParams.get("redirectTo") ??
-                                        undefined
-                                    }
-                                />
-                                <label className="block text-sm">
-                                    <span className="text-gray-700 dark:text-gray-400">
-                                        Email
-                                    </span>
-                                    <input
-                                        className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                        placeholder="Jane Doe"
-                                        type="email"
-                                        name="identifier"
-                                        defaultValue={actionData?.fields?.email}
-                                        aria-invalid={Boolean(
-                                            actionData?.fieldErrors?.email
-                                        )}
-                                        aria-errormessage={
-                                            actionData?.fieldErrors?.email
-                                                ? "email-error"
-                                                : undefined
-                                        }
-                                    />
-                                    {actionData?.fieldErrors?.email ? (
-                                        <p
-                                            className="text-red-600 mt-2"
-                                            role="alert"
-                                            id="email-error"
-                                        >
-                                            {actionData.fieldErrors.email}
-                                        </p>
-                                    ) : null}
-                                </label>
-                                <label className="block mt-4 text-sm">
-                                    <span className="text-gray-700 dark:text-gray-400">
-                                        Password
-                                    </span>
-                                    <input
-                                        className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                        placeholder="***************"
-                                        type="password"
-                                        name="password"
-                                        aria-invalid={
-                                            Boolean(
-                                                actionData?.fieldErrors
-                                                    ?.password
-                                            ) || undefined
-                                        }
-                                        aria-errormessage={
-                                            actionData?.fieldErrors?.password
-                                                ? "password-error"
-                                                : undefined
-                                        }
-                                    />
-                                    {actionData?.fieldErrors?.password ? (
-                                        <p
-                                            className="text-red-600 mt-2"
-                                            role="alert"
-                                            id="password-error"
-                                        >
-                                            {actionData.fieldErrors.password}
-                                        </p>
-                                    ) : null}
-                                </label>
-
-                                <div id="form-error-message">
-                                    {actionData?.formError ? (
-                                        <p
-                                            className="text-red-600 mt-2"
-                                            role="alert"
-                                        >
-                                            {actionData.formError}
-                                        </p>
-                                    ) : null}
-                                </div>
-
-                                {/* <!-- You should use a button here, as the anchor is only used for the example  --> */}
-                                <Button
-                                    type="submit"
-                                    disabled={transition.state === "submitting"}
-                                    className="mt-8 w-full flex items-center justify-center"
-                                >
-                                    {transition.state !== "idle" ? (
-                                        <AiOutlineLoading3Quarters
-                                            size="1.5rem"
-                                            className="animate-spin"
-                                        />
-                                    ) : (
-                                        "Log in"
-                                    )}
-                                </Button>
-                            </Form>
+                            <LoginForm
+                                actionData={actionData}
+                                searchParams={searchParams}
+                                transition={transition}
+                            />
                         </div>
                     </div>
                 </div>

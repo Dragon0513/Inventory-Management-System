@@ -9,6 +9,8 @@
         "app": "cd frontend_remix && npm run dev",
         "app:build": "cd frontend_remix && npm run build",
         "app:preview": "cd frontend_remix && npm start",
+        "app:test": "cd frontend_remix && npm run test",
+        "app:coverage": "cd frontend_remix && npm run coverage",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
         "lint:check": "eslint .",
