@@ -2,20 +2,20 @@ import { Menu } from "@headlessui/react"
 import { Link } from "@remix-run/react"
 import { useAuthProvider } from "~/context/AuthProvider"
 import config from "~/config"
+import { useThemeProvider } from "~/context/ThemeContext"
 
 const SERVER_URL = config.SERVER_URL
 
 function Header({
-    setIsSideMenuOpen,
     isSideMenuOpen,
     toggleDarkMode,
     isDarkMode,
 }: {
-    setIsSideMenuOpen: Function
     isSideMenuOpen: Boolean
     toggleDarkMode: Function
     isDarkMode: Boolean
 }) {
+    const { setIsSideMenuOpen } = useThemeProvider()
     const { avatar, username, role } = useAuthProvider()
     const avatarUrl = avatar?.formats?.thumbnail?.url
         ? SERVER_URL + avatar?.formats?.thumbnail?.url

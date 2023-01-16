@@ -1,6 +1,6 @@
 import React from "react"
 
-interface ContextType {
+export interface ContextType {
     isSideMenuOpen: Boolean
     setIsSideMenuOpen: React.Dispatch<React.SetStateAction<boolean>>
     isDarkMode: Boolean

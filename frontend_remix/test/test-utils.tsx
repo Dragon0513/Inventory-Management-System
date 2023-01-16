@@ -4,6 +4,7 @@ import type { User } from "~/types"
 import { render } from "@testing-library/react"
 import AuthProvider from "~/context/AuthProvider"
 import { MemoryRouter } from "react-router-dom"
+import ThemeProvider from "~/context/ThemeContext"
 
 export const dummyUser: User = {
     id: 3,
@@ -58,7 +59,9 @@ export const dummyUser: User = {
 const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
     return (
         <MemoryRouter initialEntries={["/login"]}>
-            <AuthProvider user={dummyUser}>{children}</AuthProvider>
+            <ThemeProvider>
+                <AuthProvider user={dummyUser}>{children}</AuthProvider>
+            </ThemeProvider>
         </MemoryRouter>
     )
 }

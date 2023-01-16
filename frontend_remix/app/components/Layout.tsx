@@ -9,8 +9,7 @@ import LoadingBar from "react-top-loading-bar"
 import { sideBarMenus } from "./SideBar/SideBarHelper"
 
 function Layout({ children }: { children: React.ReactNode }) {
-    const { isDarkMode, isSideMenuOpen, setIsSideMenuOpen, toggleDarkMode } =
-        useThemeProvider()
+    const { isDarkMode, isSideMenuOpen, toggleDarkMode } = useThemeProvider()
     // top progress bar
     const { progress, setProgress } = useTopProgressBarProvider()
     React.useEffect(() => {
@@ -29,15 +28,11 @@ function Layout({ children }: { children: React.ReactNode }) {
                     title="IMS - Fantastic 5"
                     menus={sideBarMenus}
                 />
-                <MobileSidebar
-                    isSideMenuOpen={isSideMenuOpen}
-                    setIsSideMenuOpen={setIsSideMenuOpen}
-                />
+                <MobileSidebar title="IMS - Fantastic 5" menus={sideBarMenus} />
                 <div className="flex flex-col flex-1 w-full">
                     <Header
                         isDarkMode={isDarkMode}
                         isSideMenuOpen={isSideMenuOpen}
-                        setIsSideMenuOpen={setIsSideMenuOpen}
                         toggleDarkMode={toggleDarkMode}
                     />
                     {children}
