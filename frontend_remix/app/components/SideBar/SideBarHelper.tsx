@@ -149,14 +149,12 @@ export function SideBarMenuItem({ item }: { item: sideBarMenuType }) {
                             </svg>
                         </Disclosure.Button>
                         <Disclosure.Panel>
-                            <ul
-                                className="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-gray-900"
-                                aria-label="submenu"
-                            >
+                            <ul className="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-gray-900">
                                 {item.children.map((child, i) => (
                                     <li
                                         key={i}
                                         className="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                                        aria-label="submenu"
                                     >
                                         <NavLink
                                             className={({ isActive }) =>

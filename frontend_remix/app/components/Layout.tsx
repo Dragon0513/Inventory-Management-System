@@ -6,6 +6,7 @@ import Header from "./Header"
 import DesktopSidebar from "./SideBar/DesktopSidebar"
 import MobileSidebar from "./SideBar/MobileSidebar"
 import LoadingBar from "react-top-loading-bar"
+import { sideBarMenus } from "./SideBar/SideBarHelper"
 
 function Layout({ children }: { children: React.ReactNode }) {
     const { isDarkMode, isSideMenuOpen, setIsSideMenuOpen, toggleDarkMode } =
@@ -24,7 +25,10 @@ function Layout({ children }: { children: React.ReactNode }) {
                     isSideMenuOpen ? "overflow-hidden" : null
                 )}
             >
-                <DesktopSidebar />
+                <DesktopSidebar
+                    title="IMS - Fantastic 5"
+                    menus={sideBarMenus}
+                />
                 <MobileSidebar
                     isSideMenuOpen={isSideMenuOpen}
                     setIsSideMenuOpen={setIsSideMenuOpen}

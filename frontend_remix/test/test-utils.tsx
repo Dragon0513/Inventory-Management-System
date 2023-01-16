@@ -1,10 +1,11 @@
 import type { RenderOptions } from "@testing-library/react"
 import type { ReactElement } from "react"
+import type { User } from "~/types"
 import { render } from "@testing-library/react"
 import AuthProvider from "~/context/AuthProvider"
 import { MemoryRouter } from "react-router-dom"
 
-const userData = {
+export const dummyUser: User = {
     id: 3,
     username: "Md Maruf Ahmed",
     email: "maruf@gmail.com",
@@ -57,7 +58,7 @@ const userData = {
 const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
     return (
         <MemoryRouter initialEntries={["/login"]}>
-            <AuthProvider user={userData}>{children}</AuthProvider>
+            <AuthProvider user={dummyUser}>{children}</AuthProvider>
         </MemoryRouter>
     )
 }

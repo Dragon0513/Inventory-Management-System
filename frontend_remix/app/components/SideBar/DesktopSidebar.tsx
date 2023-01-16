@@ -1,7 +1,14 @@
 import { Link } from "@remix-run/react"
-import { SideBarMenuItem, sideBarMenus } from "./SideBarHelper"
+import type { sideBarMenuType } from "./SideBarHelper"
+import { SideBarMenuItem } from "./SideBarHelper"
 
-function DesktopSidebar() {
+function DesktopSidebar({
+    title,
+    menus,
+}: {
+    title: string
+    menus: sideBarMenuType[]
+}) {
     return (
         <aside className="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
             <div className="py-4 text-gray-500 dark:text-gray-400">
@@ -9,12 +16,14 @@ function DesktopSidebar() {
                     className="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
                     to="/"
                 >
-                    IMS - Fantastic 5
+                    {title}
                 </Link>
                 <ul className="mt-6">
-                    {sideBarMenus.map((item, index) => (
-                        <SideBarMenuItem item={item} key={index} />
-                    ))}
+                    {menus?.length
+                        ? menus.map((item, index) => (
+                              <SideBarMenuItem item={item} key={index} />
+                          ))
+                        : null}
                 </ul>
             </div>
         </aside>

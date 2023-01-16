@@ -1,7 +1,7 @@
 import type { User } from "~/types"
 import React from "react"
 
-const AuthContext = React.createContext<User | null>(null)
+export const AuthContext = React.createContext<User | null>(null)
 AuthContext.displayName = "AuthContext"
 
 function AuthProvider({
