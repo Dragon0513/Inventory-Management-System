@@ -1,9 +1,17 @@
-import type { ActionFunction, LoaderFunction } from "@remix-run/node"
+import type {
+    ActionFunction,
+    LoaderFunction,
+    MetaFunction,
+} from "@remix-run/node"
 import { json, redirect } from "@remix-run/node"
 import { useActionData, useSearchParams, useTransition } from "@remix-run/react"
 import validator from "validator"
 import LoginForm from "~/components/Login/LoginForm"
 import { login, createUserSession, getUserId } from "~/utils/session.server"
+
+export const meta: MetaFunction = () => ({
+    title: "Login",
+})
 
 function validateEmail(email: unknown) {
     if (typeof email !== "string" || !validator.isEmail(email)) {

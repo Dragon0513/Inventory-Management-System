@@ -16,5 +16,7 @@ export default defineConfig({
         environment: "happy-dom",
         setupFiles: ["./test/setup-test-env.ts"],
         reporters: "verbose",
+        cache: false,
+        watch: true,
     },
 })

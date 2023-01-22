@@ -20,6 +20,11 @@
 
         // Remix takes care of building everything in `remix build`.
         "noEmit": true,
-        "types": ["vitest/globals", "@testing-library/jest-dom"]
+        "types": [
+            "vitest/globals",
+            "@testing-library/jest-dom",
+            "cypress",
+            "@testing-library/cypress"
+        ]
     }
 }

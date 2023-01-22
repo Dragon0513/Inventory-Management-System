@@ -11,7 +11,7 @@ function LoginForm({
 }: {
     actionData: ActionData | undefined
     searchParams: URLSearchParams
-    transition: Transition
+    transition: Pick<Transition, "state">
 }) {
     return (
         <Form method="post">

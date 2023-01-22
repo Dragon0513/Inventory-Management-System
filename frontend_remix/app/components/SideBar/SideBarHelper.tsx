@@ -10,16 +10,16 @@ import { BsCart2, BsFileEarmarkBarGraph } from "react-icons/bs"
 import { classNames } from "../../utils"
 import { useAuthProvider } from "~/context/AuthProvider"
 
-export interface sideBarMenuChildType {
+export interface SideBarMenuChildType {
     name: string
     url: string
 }
 
-export interface sideBarMenuType {
+export interface SideBarMenuType {
     name: string
     url: string
     icon: React.ReactNode
-    children?: Array<sideBarMenuChildType>
+    children?: Array<SideBarMenuChildType>
 }
 export const sideBarMenus = [
     {
@@ -95,7 +95,7 @@ export const sideBarMenus = [
 ]
 
 // Side bar menu item
-export function SideBarMenuItem({ item }: { item: sideBarMenuType }) {
+export function SideBarMenuItem({ item }: { item: SideBarMenuType }) {
     const { role } = useAuthProvider()
     if (
         item.name == "Products" &&
