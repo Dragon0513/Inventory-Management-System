@@ -204,3 +204,14 @@ export function SideBarMenuItem({ item }: { item: SideBarMenuType }) {
         </li>
     )
 }
+
+const sideBarMenusSize = sideBarMenus.length
+const sideBarMenusTotalSize = sideBarMenus.reduce(
+    (acc, cur) =>
+        acc +
+        (cur.children && cur.children.length > 0
+            ? 1 + cur.children?.length
+            : 1),
+    0
+)
+export { sideBarMenusSize, sideBarMenusTotalSize }

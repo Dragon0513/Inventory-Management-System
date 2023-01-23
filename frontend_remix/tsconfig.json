@@ -1,5 +1,6 @@
 {
     "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx"],
+    // "exclude": ["./cypress.config.ts"],
     "compilerOptions": {
         "lib": ["DOM", "DOM.Iterable", "ES2019"],
         "isolatedModules": true,
@@ -23,8 +24,8 @@
         "types": [
             "vitest/globals",
             "@testing-library/jest-dom",
-            "cypress"
-            // "@testing-library/cypress"
+            "cypress",
+            "@testing-library/cypress"
         ]
     }
 }

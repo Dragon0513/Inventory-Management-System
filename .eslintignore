@@ -7,4 +7,6 @@ frontend_remix/.cache
 frontend_remix/coverage
 frontend_remix/styles
 frontend_remix/public/build
+frontend_remix/cypress/e2e/1-getting-started
+frontend_remix/cypress/e2e/2-advanced-examples
 strapi_backend/*
