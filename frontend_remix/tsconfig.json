@@ -23,8 +23,8 @@
         "types": [
             "vitest/globals",
             "@testing-library/jest-dom",
-            "cypress",
-            "@testing-library/cypress"
+            "cypress"
+            // "@testing-library/cypress"
         ]
     }
 }

@@ -1,3 +1,4 @@
+import React from "react"
 import axios from "axios"
 import type { LoaderFunction } from "@remix-run/node"
 import type { Categories, ProductType, Sales } from "~/types"
@@ -9,7 +10,7 @@ import config from "~/config"
 
 const SERVER_URL = config.SERVER_URL
 
-interface LoaderData {
+export interface LoaderData {
     "Sales Revenue": string
     "Products Value": string
     "Total Products": string
@@ -57,7 +58,7 @@ export const loader: LoaderFunction = async () => {
     }
 }
 
-const cards = [
+export const cardsData = [
     {
         id: 1,
         title: "Sales Revenue",
@@ -153,9 +154,12 @@ const cards = [
     },
 ]
 
-function Card({ title, value, icon, color }: typeof cards[0]) {
+function Card({ title, value, icon, color }: (typeof cardsData)[0]) {
     return (
-        <div className="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+        <div
+            aria-label={title}
+            className="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+        >
             <div className={classNames("p-3 mr-4 rounded-full", color)}>
                 {icon}
             </div>
@@ -171,7 +175,7 @@ function Card({ title, value, icon, color }: typeof cards[0]) {
     )
 }
 
-function Index() {
+function Dashboard() {
     const products = useLoaderData<LoaderData>()
     // console.log("products ", products)
     return (
@@ -183,7 +187,7 @@ function Index() {
                 {/* <!-- Cards --> */}
 
                 <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-                    {cards.map((card) => (
+                    {cardsData.map((card) => (
                         <Card
                             key={card.id}
                             {...card}
@@ -205,4 +209,4 @@ export function ErrorBoundary({ error }: { error: Error }) {
     )
 }
 
-export default Index
+export default Dashboard

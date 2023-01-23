@@ -4,11 +4,11 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "strapi:start": "cd strapi_backend && npm start",
+        "strapi:start": "cd strapi_backend && npm run start",
         "strapi:dev": "cd strapi_backend && npm run develop",
         "app": "cd frontend_remix && npm run dev",
         "app:build": "cd frontend_remix && npm run build",
-        "app:preview": "cd frontend_remix && npm start",
+        "app:preview": "cd frontend_remix && npm run start",
         "app:test": "cd frontend_remix && npm run test",
         "app:test-watch": "cd frontend_remix && npm run test:watch",
         "app:coverage": "cd frontend_remix && npm run coverage",
