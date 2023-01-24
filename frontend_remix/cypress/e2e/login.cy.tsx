@@ -23,17 +23,30 @@ describe("Admin workflow", () => {
             cy.findByRole("heading", { name: /home dashboard/i }).should(
                 "exist"
             )
+            cy.findByText(/Sales Revenue/i).should("exist")
+            cy.findByText(/Products Value/i).should("exist")
+            cy.findByText(/Total Products/i).should("exist")
+            cy.findByText(/Total Categories/i).should("exist")
         })
 
-        cy.findByRole("complementary").within(() => {
+        cy.findByRole("complementary").within(async () => {
             cy.findAllByRole("listitem").should(
                 "have.length",
                 sideBarMenusTotalSize
             )
-            // cy.wait(100)
-            // cy.findByRole("link", { name: /sales list/i }).click()
-            // cy.wait(100)
-            // cy.findByRole("link", { name: /add new sale/i }).click()
         })
+
+        cy.findByRole("banner").within(() => {
+            cy.findByRole("img", { hidden: true }).should("exist").click()
+            cy.findByRole("menu").within(() => {
+                cy.findByRole("menuitem", {
+                    name: /Admin/i,
+                }).should("exist")
+                cy.findByRole("menuitem", { name: /Log out/i })
+                    .should("exist")
+                    .click()
+            })
+        })
+        cy.url().should("include", "/login")
     })
 })

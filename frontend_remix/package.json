@@ -9,7 +9,8 @@
         "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/app.css",
         "test": "vitest --watch=false",
         "test:watch": "vitest --watch",
-        "coverage": "vitest run --coverage"
+        "coverage": "vitest run --coverage",
+        "e2e": "cypress open"
     },
     "dependencies": {
         "@headlessui/react": "^1.7.4",

@@ -12,6 +12,7 @@
         "app:test": "cd frontend_remix && npm run test",
         "app:test-watch": "cd frontend_remix && npm run test:watch",
         "app:coverage": "cd frontend_remix && npm run coverage",
+        "app:e2e": "cd frontend_remix && npm run e2e",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
         "lint:check": "eslint .",

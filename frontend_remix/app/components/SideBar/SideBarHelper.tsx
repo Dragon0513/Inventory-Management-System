@@ -205,6 +205,7 @@ export function SideBarMenuItem({ item }: { item: SideBarMenuType }) {
     )
 }
 
+// For E2E testing
 const sideBarMenusSize = sideBarMenus.length
 const sideBarMenusTotalSize = sideBarMenus.reduce(
     (acc, cur) =>
